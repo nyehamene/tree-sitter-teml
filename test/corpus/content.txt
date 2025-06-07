@@ -1,0 +1,37 @@
+=================
+component - string content
+=================
+
+(component foo []
+	"quoted content"
+	-- line content
+	)
+
+-----------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(string)
+			(string))))
+
+=================
+document - string content
+=================
+
+(document foo []
+	"quoted content"
+	-- line content
+	)
+
+-----------------
+
+(source_file
+	(document_declaration
+		(identifier)
+		(properties)
+		(template
+			(string)
+			(string))))

@@ -98,6 +98,7 @@ module.exports = grammar({
         "document",
         optional(field("name", alias($._identifier_simple, $.identifier))),
         $.properties,
+        optional($.template),
         ")",
       ),
 
@@ -107,6 +108,7 @@ module.exports = grammar({
         "component",
         field("name", alias($._identifier_simple, $.identifier)),
         $.properties,
+        optional($.template),
         ")",
       ),
 
@@ -118,6 +120,8 @@ module.exports = grammar({
         ":",
         field("type", $.identifier),
       ),
+
+    template: ($) => repeat1($.string),
 
     _imports: ($) => repeat1($.import_declaration),
   },
