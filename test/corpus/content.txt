@@ -35,3 +35,32 @@ document - string content
 		(template
 			(string)
 			(string))))
+
+=================
+element - quoted string content
+=================
+
+(foo "quoted content")
+
+-----------------
+
+(source_file
+	(element
+		(identifier)
+		(children
+			(string))))
+
+=================
+element - line string content
+=================
+
+(foo -- quoted content
+	)
+
+-----------------
+
+(source_file
+	(element
+		(identifier)
+		(children
+			(string))))

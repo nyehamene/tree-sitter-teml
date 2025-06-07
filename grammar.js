@@ -22,6 +22,7 @@ module.exports = grammar({
         optional(seq($._imports, repeat($.using_declaration))),
         optional(repeat($.component_declaration)),
         optional(seq($.document_declaration, repeat($.component_declaration))),
+        repeat($.element), // NOTE: for test purposes only; should be embeded in a component or document template
       ),
 
     comment: () => token(seq("//", /[^\n]*/)),
@@ -120,6 +121,41 @@ module.exports = grammar({
         ":",
         field("type", $.identifier),
       ),
+
+    element: ($) =>
+      seq(
+        "(",
+        field("name", $.identifier),
+        optional(alias($._attribute_list, $.attributes)),
+        optional(alias($._element_content, $.children)),
+        ")",
+      ),
+
+    _element_content: ($) => $.string,
+
+    _attribute_list: ($) =>
+      seq(
+        optional(field("directive", seq("#", $.identifier))),
+        "{",
+        optional($._attributes),
+        "}",
+      ),
+
+    _attributes: ($) => repeat1(seq($.attribute, optional(","))),
+
+    attribute: ($) =>
+      seq(
+        field("key", alias($._identifier_simple, $.identifier)),
+        ":",
+        field("value", $.string),
+      ),
+
+    // attribute: ($) =>
+    //   seq(
+    //     field("key", alias($._identifier_simple, $.identifier)),
+    //     ":",
+    //     field("value", $.string),
+    //   ),
 
     template: ($) => repeat1($.string),
 

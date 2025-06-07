@@ -1,5 +1,76 @@
 [
   {
+    "type": "attribute",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "attributes",
+    "named": true,
+    "fields": {
+      "directive": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "children",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "component_declaration",
     "named": true,
     "fields": {
@@ -54,6 +125,36 @@
         },
         {
           "type": "template",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "element",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attributes",
+          "named": true
+        },
+        {
+          "type": "children",
           "named": true
         }
       ]
@@ -180,6 +281,10 @@
           "named": true
         },
         {
+          "type": "element",
+          "named": true
+        },
+        {
           "type": "import_declaration",
           "named": true
         },
@@ -241,6 +346,10 @@
     }
   },
   {
+    "type": "#",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -295,6 +404,14 @@
   },
   {
     "type": "using",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
     "named": false
   }
 ]

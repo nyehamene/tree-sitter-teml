@@ -1,0 +1,127 @@
+=================
+element
+=================
+
+(foo)
+(foo {})
+(foo { k: "v" })
+
+-----------------
+
+(source_file
+	(element name: (identifier))
+	(element
+		name: (identifier)
+		(attributes))
+	(element
+		name: (identifier)
+		(attributes
+			(attribute key: (identifier) value: (string)))))
+
+=================
+element - namespaced names
+=================
+
+(a/foo)
+(a/foo {})
+(a/foo { k: "v" })
+
+-----------------
+
+(source_file
+	(element name: (identifier))
+	(element
+		name: (identifier)
+		(attributes))
+	(element
+		name: (identifier)
+		(attributes
+			(attribute key: (identifier) value: (string)))))
+
+=================
+element - attribute - trailing comma
+=================
+
+(a/foo { k: "v", })
+
+-----------------
+
+(source_file
+	(element
+		name: (identifier)
+		(attributes
+			(attribute key: (identifier) value: (string)))))
+
+=================
+element - multiple attributes - space separated
+=================
+
+(a/foo { k: "v" a: "b" })
+
+-----------------
+
+(source_file
+	(element
+		name: (identifier)
+		(attributes
+			(attribute key: (identifier) value: (string))
+			(attribute key: (identifier) value: (string)))))
+
+
+=================
+element - multiple attributes - comma separated
+=================
+
+(a/foo { k: "v", a: "b" })
+
+-----------------
+
+(source_file
+	(element
+		name: (identifier)
+		(attributes
+			(attribute key: (identifier) value: (string))
+			(attribute key: (identifier) value: (string)))))
+
+=================
+element - attribute directive
+=================
+
+(foo #foo{})
+
+-----------------
+
+(source_file
+	(element
+		name: (identifier)
+		(attributes
+			directive: (identifier))))
+
+=================
+element - attribute directive - namespaced
+=================
+
+(foo #a/foo{})
+
+-----------------
+
+(source_file
+	(element
+		name: (identifier)
+		(attributes
+			directive: (identifier))))
+
+=================
+element - multiple attributes
+=================
+
+(foo {} {})
+
+-----------------
+
+(source_file
+	(element
+		name: (identifier)
+		(attributes)
+		(attributes)))
+
