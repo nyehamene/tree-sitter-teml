@@ -1,0 +1,19 @@
+[[language]]
+name = "javascript"
+formatter = { command = 'prettierd', args = [".js"] }
+auto-format = true
+
+[[language]]
+name = "typescript"
+formatter = { command = 'prettierd', args = [".ts"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+formatter = { command = 'prettierd', args = [".jsx"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+formatter = { command = 'prettierd', args = [".tsx"] }
+auto-format = true
