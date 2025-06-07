@@ -21,6 +21,7 @@ module.exports = grammar({
         optional($.package_declaration),
         optional(seq($._imports, repeat($.using_declaration))),
         optional(repeat($.component_declaration)),
+        optional($.document_declaration),
       ),
 
     comment: () => token(seq("//", /[^\n]*/)),
@@ -88,6 +89,15 @@ module.exports = grammar({
         "using",
         choice($._using_single, $._using_multiple),
         field("from", alias($._identifier_simple, $.identifier)),
+        ")",
+      ),
+
+    document_declaration: ($) =>
+      seq(
+        "(",
+        "document",
+        optional(field("name", alias($._identifier_simple, $.identifier))),
+        $.properties,
         ")",
       ),
 

@@ -189,3 +189,110 @@ component declaration: invalid property name
 (component foo [a/b A])
 
 ----------------------
+
+======================
+document declaration: no name
+======================
+
+(document [])
+
+----------------------
+
+(source_file (document_declaration (properties)))
+
+======================
+document declaration: empty property list
+======================
+
+(document foo [])
+
+----------------------
+
+(source_file
+	(document_declaration name: (identifier) (properties)))
+
+======================
+document declaration: property
+======================
+
+(document foo [a: A])
+
+----------------------
+
+(source_file
+	(document_declaration
+		name: (identifier)
+		(properties
+			(property name: (identifier) type: (identifier)))))
+
+======================
+document declaration: trailing comma
+======================
+
+(document foo [a: A,])
+
+----------------------
+
+(source_file
+	(document_declaration
+		name: (identifier)
+		(properties
+			(property name: (identifier) type: (identifier)))))
+
+======================
+document declaration: comma separator
+======================
+
+(document foo [a: A, b: B])
+
+----------------------
+
+(source_file
+	(document_declaration
+		name: (identifier)
+		(properties
+			(property name: (identifier) type: (identifier))
+			(property name: (identifier) type: (identifier)))))
+
+======================
+document declaration: no comma b/w properties
+======================
+
+(document foo [a: A  b: B])
+
+----------------------
+
+(source_file
+	(document_declaration
+		name: (identifier)
+		(properties
+			(property name: (identifier) type: (identifier))
+			(property name: (identifier) type: (identifier)))))
+
+======================
+document declaration: invalid name
+:error
+======================
+
+(document foo/bar [])
+
+----------------------
+
+======================
+document declaration: invalid property name
+:error
+======================
+
+(document foo [a/b A])
+
+----------------------
+
+======================
+document declaration: one per file
+:error
+======================
+
+(document [])
+(document [])
+
+----------------------
