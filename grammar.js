@@ -21,7 +21,7 @@ module.exports = grammar({
         optional($.package_declaration),
         optional(seq($._imports, repeat($.using_declaration))),
         optional(repeat($.component_declaration)),
-        optional($.document_declaration),
+        optional(seq($.document_declaration, repeat($.component_declaration))),
       ),
 
     comment: () => token(seq("//", /[^\n]*/)),

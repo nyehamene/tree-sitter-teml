@@ -296,3 +296,18 @@ document declaration: one per file
 (document [])
 
 ----------------------
+
+======================
+document and component declaration order
+======================
+
+(component foo [])
+(document [])
+(component bar [])
+
+----------------------
+
+(source_file
+	(component_declaration (identifier) (properties))
+    (document_declaration (properties))
+	(component_declaration (identifier) (properties)))
