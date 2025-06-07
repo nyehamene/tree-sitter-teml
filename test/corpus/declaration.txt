@@ -1,0 +1,39 @@
+======================
+comment
+======================
+
+// a comment
+
+----------------------
+
+(source_file (comment))
+
+======================
+package declaration
+======================
+
+(package p "component/main")
+
+----------------------
+
+(source_file
+	(package_declaration
+		name: (identifier)
+		path: (string)))
+
+======================
+import declaration
+======================
+
+(import i "path/to/package")
+(import i "path/to/package")
+
+----------------------
+
+(source_file
+	(import_declaration
+		name: (identifier)
+		path: (string))
+	(import_declaration
+		name: (identifier)
+		path: (string)))
