@@ -1,0 +1,39 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "teml",
+      "camelcase": "Teml",
+      "title": "Teml",
+      "scope": "source.teml",
+      "file-types": [
+        "teml"
+      ],
+      "injection-regex": "^teml$",
+      "class-name": "TreeSitterTeml"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Templ is a language agnostic templating language",
+    "authors": [
+      {
+        "name": "hnyehamene",
+        "email": "nhcdeveloper@gmail.com"
+      }
+    ],
+    "links": {
+      "repository": "https://www.github.com/teml-lang/teml"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
