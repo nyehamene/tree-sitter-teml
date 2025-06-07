@@ -22,6 +22,25 @@ package declaration
 		path: (string)))
 
 ======================
+package declaration: invalid name
+:error
+======================
+
+(package p/a "path/to/package")
+
+----------------------
+
+======================
+package declaraton: invalid path
+:error
+======================
+
+(package p -- path/to/package
+)
+
+----------------------
+
+======================
 import declaration
 ======================
 
@@ -37,3 +56,23 @@ import declaration
 	(import_declaration
 		name: (identifier)
 		path: (string)))
+
+======================
+import declaration: invalid name
+:error
+======================
+
+(import i/a "path/to/package")
+
+----------------------
+
+======================
+import declaration: invalid path
+:error
+======================
+
+(import i -- path/to/package
+)
+
+----------------------
+

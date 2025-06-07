@@ -33,13 +33,17 @@ module.exports = grammar({
       $._identifier_simple,
       repeat1(
         seq(
-          "/",
+          token.immediate("/"),
+          /[^\s\d-]/,
           $._identifier_simple
         )
       )
     ),
 
-    identifier: $ => choice($._identifier_simple, $._identifier_qualified),
+    identifier: $ => choice(
+      alias($._identifier_simple, "simple"),
+      alias($._identifier_qualified, "qualified")
+    ),
 
     // TODO: support escape sequences are expression; may require external scanner
     _string_quoted: () => token(seq("\"", /[^"]*/, "\"")),
@@ -52,16 +56,16 @@ module.exports = grammar({
     package_declaration: $ => seq(
       "(",
       "package",
-      field("name", $.identifier),
-      field("path", $.string),
+      field("name", alias($._identifier_simple, $.identifier)),
+      field("path", alias($._string_quoted, $.string)),
       ")"
     ),
 
     import_declaration: $ => seq(
       "(",
       "import",
-      field("name",$.identifier),
-      field("path", $.string),
+      field("name", alias($._identifier_simple, $.identifier)),
+      field("path", alias($._string_quoted, $.string)),
       ")"
     ),
 
