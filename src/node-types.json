@@ -1,5 +1,36 @@
 [
   {
+    "type": "component_declaration",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "properties",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "import_declaration",
     "named": true,
     "fields": {
@@ -52,6 +83,52 @@
     }
   },
   {
+    "type": "properties",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "property",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "property",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "qualified",
+    "named": false,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -60,6 +137,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "component_declaration",
+          "named": true
+        },
         {
           "type": "import_declaration",
           "named": true
@@ -114,6 +195,14 @@
     "named": false
   },
   {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
     "type": "[",
     "named": false
   },
@@ -127,8 +216,8 @@
     "extra": true
   },
   {
-    "type": "identifier",
-    "named": true
+    "type": "component",
+    "named": false
   },
   {
     "type": "import",
@@ -136,6 +225,10 @@
   },
   {
     "type": "package",
+    "named": false
+  },
+  {
+    "type": "simple",
     "named": false
   },
   {

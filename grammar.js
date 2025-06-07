@@ -20,6 +20,7 @@ module.exports = grammar({
         // NOTE: package is optional for testing only
         optional($.package_declaration),
         optional(seq($._imports, repeat($.using_declaration))),
+        optional(repeat($.component_declaration)),
       ),
 
     comment: () => token(seq("//", /[^\n]*/)),
@@ -29,7 +30,7 @@ module.exports = grammar({
     _identifier_qualified: ($) =>
       seq(
         $._identifier_simple,
-        repeat1(seq(token.immediate("/"), /[^\s\d-]/, $._identifier_simple)),
+        repeat1(seq(token.immediate("/"), $._identifier_simple)),
       ),
 
     identifier: ($) =>
@@ -88,6 +89,24 @@ module.exports = grammar({
         choice($._using_single, $._using_multiple),
         field("from", alias($._identifier_simple, $.identifier)),
         ")",
+      ),
+
+    component_declaration: ($) =>
+      seq(
+        "(",
+        "component",
+        field("name", alias($._identifier_simple, $.identifier)),
+        $.properties,
+        ")",
+      ),
+
+    properties: ($) => seq("[", repeat(seq($.property, optional(","))), "]"),
+
+    property: ($) =>
+      seq(
+        field("name", alias($._identifier_simple, $.identifier)),
+        ":",
+        field("type", $.identifier),
       ),
 
     _imports: ($) => repeat1($.import_declaration),

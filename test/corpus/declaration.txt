@@ -136,3 +136,56 @@ using declaration: invalid name (from)
 (using a i/a)
 
 ----------------------
+
+======================
+component declaration
+======================
+
+(component fancy-button [])
+(component fancy-button [a: A])
+(component fancy-button [a: A, b: B])
+(component fancy-button [a: A  b: B])
+(component fancy-button [a: S/B])
+
+----------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties))
+	(component_declaration
+		name: (identifier)
+		(properties
+			(property name: (identifier) type: (identifier))))
+	(component_declaration
+		name: (identifier)
+		(properties
+			(property name: (identifier) type: (identifier))
+			(property name: (identifier) type: (identifier))))
+	(component_declaration
+		name: (identifier)
+		(properties
+			(property name: (identifier) type: (identifier))
+			(property name: (identifier) type: (identifier))))
+	(component_declaration
+		name: (identifier)
+		(properties
+			(property name: (identifier) type: (identifier)))))
+
+======================
+component declaration: invalid name
+:error
+======================
+
+(component foo/bar [])
+
+----------------------
+
+======================
+component declaration: invalid property name
+:error
+======================
+
+(component foo [a/b A])
+
+----------------------
