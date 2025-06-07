@@ -1,0 +1,38 @@
+================
+identifier qualified
+================
+
+(foo/bar)
+
+---------------
+
+(source_file
+	(expression
+		(render name: (identifier))))
+
+================
+invalid identifier qualified
+:error
+================
+
+(foo/ bar)
+
+---------------
+
+================
+invalid identifier qualified
+:error
+================
+
+(foo /bar)
+
+---------------
+
+================
+invalid identifier qualified
+:error
+================
+
+(foo / bar)
+
+---------------
