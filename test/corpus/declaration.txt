@@ -76,3 +76,63 @@ import declaration: invalid path
 
 ----------------------
 
+======================
+using declaration
+======================
+
+(import i "path/to/package")
+(using s i)
+(using [a b] i)
+(using [a, b] i)
+(using [a,] i)
+
+----------------------
+
+(source_file
+	(import_declaration
+		name: (identifier)
+		path: (string))
+	(using_declaration
+		name: (identifier)
+		from: (identifier))
+	(using_declaration
+		name: (identifier)
+		name: (identifier)
+		from: (identifier))
+	(using_declaration
+		name: (identifier)
+		name: (identifier)
+		from: (identifier))
+	(using_declaration
+		name: (identifier)
+		from: (identifier)))
+
+======================
+using declaration: invalid name
+:error
+======================
+
+(import i "path")
+(using i/a i)
+
+----------------------
+
+======================
+using declaration: invalid name
+:error
+======================
+
+(import i "path")
+(using [i/a] i)
+
+----------------------
+
+======================
+using declaration: invalid name (from)
+:error
+======================
+
+(import i "path")
+(using a i/a)
+
+----------------------

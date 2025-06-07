@@ -21,6 +21,7 @@ module.exports = grammar({
       optional(
         seq(
           $._imports,
+          repeat($.using_declaration)
         )
       ),
     ),
@@ -66,6 +67,31 @@ module.exports = grammar({
       "import",
       field("name", alias($._identifier_simple, $.identifier)),
       field("path", alias($._string_quoted, $.string)),
+      ")"
+    ),
+
+    _using_single: $ => seq(
+      field("name", alias($._identifier_simple, $.identifier)),
+    ),
+
+    _using_multiple: $ => seq(
+      "[",
+      optional(
+        repeat(
+          seq(
+            field("name", alias($._identifier_simple, $.identifier)),
+            optional(","), // allow trailing comma
+          )
+        )
+      ),
+      "]",
+    ),
+
+    using_declaration: $ => seq(
+      "(",
+      "using",
+      choice($._using_single, $._using_multiple),
+      field("from", alias($._identifier_simple, $.identifier)),
       ")"
     ),
 

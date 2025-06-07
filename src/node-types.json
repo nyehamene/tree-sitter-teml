@@ -1,10 +1,5 @@
 [
   {
-    "type": "identifier",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "import_declaration",
     "named": true,
     "fields": {
@@ -72,14 +67,39 @@
         {
           "type": "package_declaration",
           "named": true
+        },
+        {
+          "type": "using_declaration",
+          "named": true
         }
       ]
     }
   },
   {
-    "type": "string",
+    "type": "using_declaration",
     "named": true,
-    "fields": {}
+    "fields": {
+      "from": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "(",
@@ -90,7 +110,15 @@
     "named": false
   },
   {
-    "type": "/",
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
@@ -99,11 +127,23 @@
     "extra": true
   },
   {
+    "type": "identifier",
+    "named": true
+  },
+  {
     "type": "import",
     "named": false
   },
   {
     "type": "package",
+    "named": false
+  },
+  {
+    "type": "string",
+    "named": true
+  },
+  {
+    "type": "using",
     "named": false
   }
 ]
