@@ -164,15 +164,31 @@ module.exports = grammar({
       ),
 
     call: ($) =>
-      seq("(", choice($.operator, $._expression), repeat($._expression), ")"),
+      seq(
+        "(",
+        field(
+          "func",
+          choice(
+            $.operator,
+            $.property_access,
+            alias($._identifier_simple, $.identifier),
+            $.call,
+          ),
+        ),
+        repeat(seq($._expression, optional(","))),
+        ")",
+      ),
 
     property_access: ($) =>
       seq(
         field(
           "object",
-          repeat1(seq($._identifier_simple, token.immediate("."))),
+          alias(
+            repeat1(seq($._identifier_simple, token.immediate("."))),
+            $.identifier,
+          ),
         ),
-        field("property", $._identifier_simple),
+        field("property", alias($._identifier_simple, $.identifier)),
       ),
 
     template: ($) => repeat1(choice($.string, $.element)),

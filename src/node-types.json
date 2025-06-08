@@ -83,10 +83,33 @@
   {
     "type": "call",
     "named": true,
-    "fields": {},
+    "fields": {
+      "func": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "operator",
+            "named": true
+          },
+          {
+            "type": "property_access",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "bool",
@@ -102,10 +125,6 @@
         },
         {
           "type": "number",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {
@@ -341,12 +360,22 @@
     "named": true,
     "fields": {
       "object": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": ".",
-            "named": false
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "property": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
           }
         ]
       }

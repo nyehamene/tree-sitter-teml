@@ -51,7 +51,49 @@ expression - number
 				(number)))))
 
 ===================
-expression - operator
+expression - call
+===================
+
+(foo {a: (a true "" 10 foo)})
+
+-------------------
+
+(source_file
+	(element
+		(identifier)
+		(attributes
+			(attribute
+				(identifier)
+				(call
+					(identifier)
+					(bool)
+					(string)
+					(number)
+					(identifier))))))
+
+===================
+expression - call - comma
+===================
+
+(foo {a: (a true, "", 10, foo)})
+
+-------------------
+
+(source_file
+	(element
+		(identifier)
+		(attributes
+			(attribute
+				(identifier)
+				(call
+					(identifier)
+					(bool)
+					(string)
+					(number)
+					(identifier))))))
+
+===================
+expression - call - operator
 ===================
 
 (foo {a: (> a "")})
@@ -68,3 +110,84 @@ expression - operator
 					(operator)
 					(identifier)
 					(string))))))
+
+===================
+expression - call - identifier
+===================
+
+(foo {a: (a)})
+
+-------------------
+
+(source_file
+	(element
+		(identifier)
+		(attributes
+			(attribute
+				(identifier)
+				(call
+					(identifier))))))
+
+===================
+expression - call - property access
+===================
+
+(foo {a: (a.b)})
+
+-------------------
+
+(source_file
+	(element
+		name: (identifier)
+		(attributes
+			(attribute
+				key: (identifier)
+				value: (call
+					func: (property_access
+						object: (identifier)
+						property: (identifier)))))))
+
+===================
+expression - call - namespaced identifier as func not allowed
+:error
+===================
+
+(foo {a: (a/b)})
+
+-------------------
+
+===================
+expression - call - bool (true) as func not allowed
+:error
+===================
+
+(foo {a: (true)})
+
+-------------------
+
+===================
+expression - call - bool (false) as func not allowed
+:error
+===================
+
+(foo {a: (error)})
+
+-------------------
+
+===================
+expression - call - string as func not allowed
+:error
+===================
+
+(foo {a: ("")})
+
+-------------------
+
+===================
+expression - call - number as func not allowed
+:error
+===================
+
+(foo {a: (0)})
+
+-------------------
