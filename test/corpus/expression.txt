@@ -1,38 +1,15 @@
-================
-identifier qualified
-================
+===================
+expression - bool
+===================
 
-(foo/bar)
+(foo {a: true})
 
----------------
+-------------------
 
 (source_file
-	(expression
-		(render name: (identifier))))
-
-================
-invalid identifier qualified
-:error
-================
-
-(foo/ bar)
-
----------------
-
-================
-invalid identifier qualified
-:error
-================
-
-(foo /bar)
-
----------------
-
-================
-invalid identifier qualified
-:error
-================
-
-(foo / bar)
-
----------------
+	(element
+		(identifier)
+		(attributes
+			(attribute
+				(identifier)
+				(bool)))))

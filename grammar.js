@@ -49,6 +49,16 @@ module.exports = grammar({
 
     string: ($) => choice($._string_quoted, $._string_line),
 
+    number: () => choice("0", /[1-9][0-9]*/),
+
+    bool: () => choice("true", "false"),
+
+    _literal: ($) => choice($.string, $.number, $.bool),
+
+    _expression: ($) => choice($._literal, $.call),
+
+    operator: () => choice(">", "<", "=", "not", "and", "or"),
+
     package_declaration: ($) =>
       seq(
         "(",
@@ -144,7 +154,23 @@ module.exports = grammar({
       seq(
         field("key", alias($._identifier_simple, $.identifier)),
         ":",
-        field("value", $.string),
+        field("value", $._expression),
+      ),
+
+    call: ($) =>
+      seq(
+        "(",
+        choice($.operator, $._identifier_simple, $.property_access),
+        ")",
+      ),
+
+    property_access: ($) =>
+      seq(
+        field(
+          "object",
+          repeat1(seq($._identifier_simple, token.immediate("."))),
+        ),
+        field("property", $._identifier_simple),
       ),
 
     template: ($) => repeat1(choice($.string, $.element)),
