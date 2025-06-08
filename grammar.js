@@ -126,12 +126,11 @@ module.exports = grammar({
       seq(
         "(",
         field("name", $.identifier),
-        optional($.attributes),
-        optional(alias($._element_content, $.children)),
+        repeat(choice($.attributes, alias($._element_content, $.children))),
         ")",
       ),
 
-    _element_content: ($) => repeat1(choice($.string, $.element)),
+    _element_content: ($) => prec.right(repeat1(choice($.string, $.element))),
 
     attributes: ($) =>
       seq(

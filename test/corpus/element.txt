@@ -125,3 +125,19 @@ element - multiple attributes
 		(attributes)
 		(attributes)))
 
+=================
+element - mixed attribute and content
+=================
+
+(foo {} "foo" {} (foo))
+
+-----------------
+
+(source_file
+	(element
+		name: (identifier)
+		(attributes)
+		(children (string))
+		(attributes)
+		(children (element name: (identifier)))))
+
