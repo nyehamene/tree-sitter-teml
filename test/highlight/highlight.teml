@@ -1,35 +1,44 @@
 (package p "path/to/package")
-// ^^^^^ keyword
-//       ^ variable.package
 //         ^^^^^^^^^^^^^^^^^ string
+//       ^ variable.package
+// ^^^^^ keyword
 
 (import p "path/to/package")
-// ^^^^  keyword
-//      ^ variable.package.import
 //         ^^^^^^^^^^^^^^^^  string
+//      ^ variable.package.import
+// ^^^^  keyword
 
 (using p i)
-// ^^^ keyword
-//     ^ variable
 //       ^ variable.package.import
+//     ^ variable
+// ^^^ keyword
 
 (using [a b] i)
-//      ^ variable
-//        ^ variable
 //           ^ variable.package.import
+//        ^ variable
+//      ^ variable
+// ^^^ keyword
 
-(component Foo [a: A])
-// ^^^^^^^ keyword
-//         ^^^ type.definition
-//              ^ variable.member
-//                 ^ type
-
-(document Foo [a: A])
-// ^^^^^^ keyword
-//        ^^^ type.definition
-//             ^ variable.member
+(document Foo [a: A]
 //                ^ type
+//             ^ variable.member
+//        ^^^ type.definition
+// ^^^^^^ keyword
 
-(foo {foo: "foo"})
-// ^ tag
-//    ^^^ tag.attribute
+	(foo {key: "value"})
+	//         ^^^^^^^ string
+	//    ^^^ tag.attribute
+	// ^ tag
+)
+
+(component Foo [a: A]
+//                 ^ type
+//              ^ variable.member
+//         ^^^ type.definition
+// ^^^^^^^ keyword
+
+	(foo {key: "value"})
+	//         ^^^^^^^ string
+	//    ^^^ tag.attribute
+	// ^ tag
+)

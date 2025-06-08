@@ -23,6 +23,6 @@
 	type: (identifier) @local.reference)
 
 (element
-	name: (identifier) @local.reference)
+	tag: (identifier) @local.reference)
 
 (call (identifier) @local.reference)

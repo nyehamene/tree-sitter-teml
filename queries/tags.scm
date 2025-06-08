@@ -23,4 +23,4 @@
   type: (identifier) @name) @reference.class
 
 (element
-  name: (identifier) @name) @reference.call
+  tag: (identifier) @name) @reference.call

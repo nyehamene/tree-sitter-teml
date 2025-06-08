@@ -12,15 +12,16 @@
 //      ^ definition.variable
 //         ^ reference.package.import
 
-(component foo [a: A])
-//         ^^^ definition.class
-//              ^ definition.variable.member
-//                 ^ reference.class
-
 (document foo [a: A])
 //        ^^^ definition.class
 //             ^ definition.variable.member
 //                ^ reference.class
 
-(foo {a: a})
-// ^ reference.call
+(component foo [a: A])
+//         ^^^ definition.class
+//              ^ definition.variable.member
+//                 ^ reference.class
+
+(component foo []
+	(foo {a: a}))
+	// ^ reference.call

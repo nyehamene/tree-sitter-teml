@@ -40,30 +40,41 @@ document - string content
 element - quoted string content
 =================
 
-(foo "quoted content")
+(component foo []
+	(foo "quoted content"))
 
 -----------------
 
 (source_file
-	(element
+	(component_declaration
 		(identifier)
-		(children
-			(string))))
+		(properties)
+		(template
+			(element
+				(identifier)
+				(children
+					(string))))))
 
 =================
 element - line string content
 =================
 
-(foo -- quoted content
-	)
+(component foo []
+	(foo
+		-- quoted content
+	))
 
 -----------------
 
 (source_file
-	(element
+	(component_declaration
 		(identifier)
-		(children
-			(string))))
+		(properties)
+		(template
+			(element
+				(identifier)
+				(children
+					(string))))))
 
 =================
 component - content - element
@@ -99,16 +110,21 @@ document - content - element
 element - content - element
 =================
 
-(foo {} (foo))
+(component foo []
+	(foo {} (foo)))
 
 -----------------
 
 (source_file
-	(element
+	(component_declaration
 		(identifier)
-		(attributes)
-		(children
-			(element (identifier)))))
+		(properties)
+		(template
+			(element
+				(identifier)
+				(attributes)
+				(children
+					(element (identifier)))))))
 
 =================
 component - mixed content
@@ -146,15 +162,20 @@ document - mixed content
 element - mixed content
 =================
 
-(foo {} "string" (foo))
+(component foo []
+	(foo {} "string" (foo)))
 
 -----------------
 
 (source_file
-	(element
+	(component_declaration
 		(identifier)
-		(attributes)
-		(children
-			(string)
-			(element (identifier)))))
+		(properties)
+		(template
+			(element
+				(identifier)
+				(attributes)
+				(children
+					(string)
+					(element (identifier)))))))
 

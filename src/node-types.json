@@ -221,7 +221,7 @@
     "type": "element",
     "named": true,
     "fields": {
-      "name": {
+      "tag": {
         "multiple": false,
         "required": true,
         "types": [
@@ -401,10 +401,6 @@
         },
         {
           "type": "document_declaration",
-          "named": true
-        },
-        {
-          "type": "element",
           "named": true
         },
         {

@@ -48,6 +48,13 @@
 
 (import_declaration name: (identifier) @variable.package.import)
 
+(attribute
+  key: (identifier) @tag.attribute)
+
+(property
+  name: (identifier) @variable.member
+  type: (identifier) @type)
+
 (using_declaration
   name: (identifier) @variable
   from: (identifier) @variable.package.import)
@@ -58,12 +65,5 @@
 (document_declaration
   name: (identifier) @type.definition)
 
-(property
-  name: (identifier) @variable.member
-  type: (identifier) @type)
-
-(element
-  name: (identifier) @tag)
-
-(attribute
-  key: (identifier) @tag.attribute)
+((element tag: (identifier) @tag)
+ (#is-not? @tag "component" "document"))

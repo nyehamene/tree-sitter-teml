@@ -46,35 +46,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "component_declaration"
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "document_declaration"
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "component_declaration"
-                  }
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "document_declaration"
             },
             {
               "type": "BLANK"
@@ -85,7 +58,7 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "element"
+            "name": "component_declaration"
           }
         }
       ]
@@ -685,7 +658,7 @@
         },
         {
           "type": "FIELD",
-          "name": "name",
+          "name": "tag",
           "content": {
             "type": "SYMBOL",
             "name": "identifier"

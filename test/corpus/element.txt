@@ -2,142 +2,111 @@
 element
 =================
 
-(foo)
-(foo {})
-(foo { k: "v" })
-
+(component foo []
+	(foo)
+	(a/foo {})
+	(foo { k: "v", })
+	(foo { k: "v", a: "b" })
+	(foo { k: "v"  a: "b" }))
 -----------------
 
 (source_file
-	(element name: (identifier))
-	(element
+	(component_declaration
 		name: (identifier)
-		(attributes))
-	(element
-		name: (identifier)
-		(attributes
-			(attribute key: (identifier) value: (string)))))
-
-=================
-element - namespaced names
-=================
-
-(a/foo)
-(a/foo {})
-(a/foo { k: "v" })
-
------------------
-
-(source_file
-	(element name: (identifier))
-	(element
-		name: (identifier)
-		(attributes))
-	(element
-		name: (identifier)
-		(attributes
-			(attribute key: (identifier) value: (string)))))
-
-=================
-element - attribute - trailing comma
-=================
-
-(a/foo { k: "v", })
-
------------------
-
-(source_file
-	(element
-		name: (identifier)
-		(attributes
-			(attribute key: (identifier) value: (string)))))
-
-=================
-element - multiple attributes - space separated
-=================
-
-(a/foo { k: "v" a: "b" })
-
------------------
-
-(source_file
-	(element
-		name: (identifier)
-		(attributes
-			(attribute key: (identifier) value: (string))
-			(attribute key: (identifier) value: (string)))))
-
-
-=================
-element - multiple attributes - comma separated
-=================
-
-(a/foo { k: "v", a: "b" })
-
------------------
-
-(source_file
-	(element
-		name: (identifier)
-		(attributes
-			(attribute key: (identifier) value: (string))
-			(attribute key: (identifier) value: (string)))))
+		(properties)
+		(template
+			(element tag: (identifier))
+			(element
+				tag: (identifier)
+				(attributes))
+			(element
+				tag: (identifier)
+				(attributes
+					(attribute
+						key: (identifier)
+						value: (string))))
+			(element
+				tag: (identifier)
+				(attributes
+					(attribute
+						key: (identifier)
+						value: (string))
+					(attribute
+						key: (identifier)
+						value: (string))))
+			(element
+				tag: (identifier)
+				(attributes
+					(attribute
+						key: (identifier)
+						value: (string))
+				(attribute
+						key: (identifier)
+						value: (string)))))))
 
 =================
 element - attribute directive
 =================
 
-(foo #foo{})
+(component foo []
+	(foo #foo{})
+	(foo #a/foo{}))
 
 -----------------
 
 (source_file
-	(element
+	(component_declaration
 		name: (identifier)
-		(attributes
-			directive: (identifier))))
-
-=================
-element - attribute directive - namespaced
-=================
-
-(foo #a/foo{})
-
------------------
-
-(source_file
-	(element
-		name: (identifier)
-		(attributes
-			directive: (identifier))))
+		(properties)
+		(template
+			(element
+				tag: (identifier)
+				(attributes
+					directive: (identifier)))
+			(element
+				tag: (identifier)
+				(attributes
+					directive: (identifier))))))
 
 =================
 element - multiple attributes
 =================
 
-(foo {} {})
+(component foo []
+	(foo {} {}))
 
 -----------------
 
 (source_file
-	(element
-		name: (identifier)
-		(attributes)
-		(attributes)))
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(element
+				(identifier)
+				(attributes)
+				(attributes)))))
 
 =================
 element - mixed attribute and content
 =================
 
-(foo {} "foo" {} (foo))
+(component foo []
+	(foo {}
+		"foo"
+		{}
+		(foo)))
 
 -----------------
 
 (source_file
-	(element
-		name: (identifier)
-		(attributes)
-		(children (string))
-		(attributes)
-		(children (element name: (identifier)))))
-
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(element
+				(identifier)
+				(attributes)
+				(children (string))
+				(attributes)
+				(children (element (identifier)))))))

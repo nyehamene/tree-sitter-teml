@@ -2,150 +2,191 @@
 expression - bool
 ===================
 
-(foo {a: true})
+(component foo []
+	(foo {a: true}))
 
 -------------------
 
 (source_file
-	(element
+	(component_declaration
 		(identifier)
-		(attributes
-			(attribute
+		(properties)
+		(template
+			(element
 				(identifier)
-				(bool)))))
+				(attributes
+					(attribute
+						(identifier)
+						(bool)))))))
 
 ===================
 expression - string
 ===================
 
-(foo {a: "foo"})
+(component foo []
+	(foo {a: "foo"}))
 
 -------------------
 
 (source_file
-	(element
+	(component_declaration
 		(identifier)
-		(attributes
-			(attribute
+		(properties)
+		(template
+			(element
 				(identifier)
-				(string)))))
+				(attributes
+					(attribute
+						(identifier)
+						(string)))))))
+
 
 ===================
 expression - number
 ===================
 
-(foo {a: 0
-	  b: 10})
+(component foo []
+	(foo {a: 0
+	  	  b: 10}))
 
 -------------------
 
 (source_file
-	(element
+	(component_declaration
 		(identifier)
-		(attributes
-			(attribute
+		(properties)
+		(template
+			(element
 				(identifier)
-				(number))
-			(attribute
-				(identifier)
-				(number)))))
+				(attributes
+					(attribute
+						(identifier)
+						(number))
+					(attribute
+						(identifier)
+						(number)))))))
 
 ===================
 expression - call
 ===================
 
-(foo {a: (a true "" 10 foo)})
+(component foo []
+	(foo {a: (a true "" 10 foo)}))
 
 -------------------
 
 (source_file
-	(element
+	(component_declaration
 		(identifier)
-		(attributes
-			(attribute
-				(identifier)
-				(call
+		(properties)
+		(template
+			(element
+			(identifier)
+			(attributes
+				(attribute
 					(identifier)
-					(bool)
-					(string)
-					(number)
-					(identifier))))))
+					(call
+						(identifier)
+						(bool)
+						(string)
+						(number)
+						(identifier))))))))
 
 =========================
 expression - call - comma
 =========================
 
-(foo {a: (a true, "", 10, foo)})
+(component foo []
+	(foo {a: (a true, "", 10, foo)}))
 
 -------------------------
 
 (source_file
-	(element
+	(component_declaration
 		(identifier)
-		(attributes
-			(attribute
-				(identifier)
-				(call
+		(properties)
+		(template
+			(element
+			(identifier)
+			(attributes
+				(attribute
 					(identifier)
-					(bool)
-					(string)
-					(number)
-					(identifier))))))
+					(call
+						(identifier)
+						(bool)
+						(string)
+						(number)
+						(identifier))))))))
 
 ==========================
 expression - call operator
 ==========================
 
-(foo {a: (> a "")})
+(component foo []
+	(foo {a: (> a "")}))
 
 --------------------------
 
 (source_file
-	(element
+	(component_declaration
 		(identifier)
-		(attributes
-			(attribute
-				(identifier)
-				(call
-					(operator)
+		(properties)
+		(template
+			(element
+			(identifier)
+			(attributes
+				(attribute
 					(identifier)
-					(string))))))
+					(call
+						(operator)
+						(identifier)
+						(string))))))))
 
 ===============================
 expression - call - identifier
 ===============================
 
-(foo {a: (a)})
+(component foo []
+	(foo {a: (a)}))
 
 -------------------------------
 
 (source_file
-	(element
+	(component_declaration
 		(identifier)
-		(attributes
-			(attribute
+		(properties)
+		(template
+			(element
 				(identifier)
-				(call
-					(identifier))))))
+				(attributes
+					(attribute
+						(identifier)
+						(call
+							(identifier))))))))
 
 ===================================
 expression - call - property access
 ===================================
 
-(foo {a: (a.b)})
+(component foo []
+	(foo {a: (a.b)}))
 
 -----------------------------------
 
 (source_file
-	(element
-		name: (identifier)
-		(attributes
-			(attribute
-				key: (identifier)
-				value: (call
-					func: (property_access
-						object: (identifier)
-						property: (identifier)))))))
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(element
+				(identifier)
+				(attributes
+					(attribute
+						(identifier)
+						(call
+							(property_access
+								(identifier)
+								(identifier)))))))))
 
 =========================================
 expression - call
@@ -153,7 +194,8 @@ namespaced identifier as func not allowed
 :error
 =========================================
 
-(foo {a: (a/b)})
+(component foo []
+	(foo {a: (a/b)}))
 
 -----------------------------------------
 
@@ -163,7 +205,8 @@ expression - call - bool (true) as func not allowed
 :error
 ===================================================
 
-(foo {a: (true)})
+(component foo []
+	(foo {a: (true)}))
 
 ---------------------------------------------------
 
@@ -173,7 +216,8 @@ expression - call - bool (false) as func not allowed
 :error
 ====================================================
 
-(foo {a: (false)})
+(component foo []
+	(foo {a: (false)}))
 
 ----------------------------------------------------
 
@@ -182,7 +226,8 @@ expression - call - string as func not allowed
 :error
 ==============================================
 
-(foo {a: ("")})
+(component foo []
+	(foo {a: ("")}))
 
 -------------------
 
@@ -191,6 +236,7 @@ expression - call - number as func not allowed
 :error
 ==============================================
 
-(foo {a: (0)})
+(component foo []
+	(foo {a: (0)}))
 
 ----------------------------------------------

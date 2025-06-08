@@ -288,6 +288,21 @@ document declaration: invalid property name
 ----------------------
 
 ======================
+document and component declaration order
+======================
+
+(document [])
+(component bar [])
+(component foo [])
+
+----------------------
+
+(source_file
+    (document_declaration (properties))
+	(component_declaration (identifier) (properties))
+	(component_declaration (identifier) (properties)))
+
+======================
 document declaration: one per file
 :error
 ======================
@@ -298,16 +313,11 @@ document declaration: one per file
 ----------------------
 
 ======================
-document and component declaration order
+no component declaration before document
+:error
 ======================
 
 (component foo [])
 (document [])
-(component bar [])
 
 ----------------------
-
-(source_file
-	(component_declaration (identifier) (properties))
-    (document_declaration (properties))
-	(component_declaration (identifier) (properties)))

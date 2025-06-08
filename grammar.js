@@ -17,12 +17,10 @@ module.exports = grammar({
   rules: {
     source_file: ($) =>
       seq(
-        // NOTE: package is optional for testing only
         optional($.package_declaration),
         optional(seq($._imports, repeat($.using_declaration))),
-        optional(repeat($.component_declaration)),
-        optional(seq($.document_declaration, repeat($.component_declaration))),
-        repeat($.element), // NOTE: for test purposes only; should be embeded in a component or document template
+        optional($.document_declaration),
+        repeat($.component_declaration),
       ),
 
     comment: () => token(seq("//", /[^\n]*/)),
@@ -141,7 +139,7 @@ module.exports = grammar({
     element: ($) =>
       seq(
         "(",
-        field("name", $.identifier),
+        field("tag", $.identifier),
         repeat(choice($.attributes, alias($._element_content, $.children))),
         ")",
       ),
