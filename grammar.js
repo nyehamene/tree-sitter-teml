@@ -131,7 +131,7 @@ module.exports = grammar({
         ")",
       ),
 
-    _element_content: ($) => choice($.string, $.element),
+    _element_content: ($) => repeat1(choice($.string, $.element)),
 
     attributes: ($) =>
       seq(

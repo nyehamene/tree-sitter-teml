@@ -109,3 +109,52 @@ element - content - element
 		(attributes)
 		(children
 			(element (identifier)))))
+
+=================
+component - mixed content
+=================
+
+(component foo [] "string" (foo))
+
+-----------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(string)
+			(element (identifier)))))
+
+=================
+document - mixed content
+=================
+
+(document foo [] "string" (foo))
+
+-----------------
+
+(source_file
+	(document_declaration
+		(identifier)
+		(properties)
+		(template
+			(string)
+			(element (identifier)))))
+
+=================
+element - mixed content
+=================
+
+(foo {} "string" (foo))
+
+-----------------
+
+(source_file
+	(element
+		(identifier)
+		(attributes)
+		(children
+			(string)
+			(element (identifier)))))
+
