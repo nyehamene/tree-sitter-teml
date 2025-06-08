@@ -13,3 +13,19 @@ expression - bool
 			(attribute
 				(identifier)
 				(bool)))))
+
+===================
+expression - string
+===================
+
+(foo {a: "foo"})
+
+-------------------
+
+(source_file
+	(element
+		(identifier)
+		(attributes
+			(attribute
+				(identifier)
+				(string)))))
