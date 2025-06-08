@@ -25,7 +25,7 @@ module.exports = grammar({
 
     comment: () => token(seq("//", /[^\n]*/)),
 
-    _identifier_simple: () => /[a-zA-Z][a-zA-Z-_]*/,
+    _identifier_simple: () => /[a-zA-Z][a-zA-Z[0-9]-_]*/,
 
     _identifier_qualified: ($) =>
       seq(
