@@ -126,22 +126,20 @@ module.exports = grammar({
       seq(
         "(",
         field("name", $.identifier),
-        optional(alias($._attribute_list, $.attributes)),
+        optional($.attributes),
         optional(alias($._element_content, $.children)),
         ")",
       ),
 
-    _element_content: ($) => $.string,
+    _element_content: ($) => choice($.string, $.element),
 
-    _attribute_list: ($) =>
+    attributes: ($) =>
       seq(
         optional(field("directive", seq("#", $.identifier))),
         "{",
-        optional($._attributes),
+        optional(repeat1(seq($.attribute, optional(",")))),
         "}",
       ),
-
-    _attributes: ($) => repeat1(seq($.attribute, optional(","))),
 
     attribute: ($) =>
       seq(
@@ -150,14 +148,7 @@ module.exports = grammar({
         field("value", $.string),
       ),
 
-    // attribute: ($) =>
-    //   seq(
-    //     field("key", alias($._identifier_simple, $.identifier)),
-    //     ":",
-    //     field("value", $.string),
-    //   ),
-
-    template: ($) => repeat1($.string),
+    template: ($) => repeat1(choice($.string, $.element)),
 
     _imports: ($) => repeat1($.import_declaration),
   },

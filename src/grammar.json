@@ -597,13 +597,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_attribute_list"
-              },
-              "named": true,
-              "value": "attributes"
+              "type": "SYMBOL",
+              "name": "attributes"
             },
             {
               "type": "BLANK"
@@ -634,10 +629,19 @@
       ]
     },
     "_element_content": {
-      "type": "SYMBOL",
-      "name": "string"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "element"
+        }
+      ]
     },
-    "_attribute_list": {
+    "attributes": {
       "type": "SEQ",
       "members": [
         {
@@ -673,8 +677,28 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "_attributes"
+              "type": "REPEAT1",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "attribute"
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  }
+                ]
+              }
             },
             {
               "type": "BLANK"
@@ -686,30 +710,6 @@
           "value": "}"
         }
       ]
-    },
-    "_attributes": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "attribute"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": ","
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        ]
-      }
     },
     "attribute": {
       "type": "SEQ",
@@ -744,8 +744,17 @@
     "template": {
       "type": "REPEAT1",
       "content": {
-        "type": "SYMBOL",
-        "name": "string"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "string"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "element"
+          }
+        ]
       }
     },
     "_imports": {

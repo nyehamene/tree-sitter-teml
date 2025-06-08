@@ -64,3 +64,48 @@ element - line string content
 		(identifier)
 		(children
 			(string))))
+
+=================
+component - content - element
+=================
+
+(component foo [] (foo))
+
+-----------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(element (identifier)))))
+
+=================
+document - content - element
+=================
+
+(document foo [] (foo))
+
+-----------------
+
+(source_file
+	(document_declaration
+		(identifier)
+		(properties)
+		(template
+			(element (identifier)))))
+
+=================
+element - content - element
+=================
+
+(foo {} (foo))
+
+-----------------
+
+(source_file
+	(element
+		(identifier)
+		(attributes)
+		(children
+			(element (identifier)))))
