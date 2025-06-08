@@ -261,6 +261,19 @@
           "name": "_literal"
         },
         {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_identifier_simple"
+          },
+          "named": true,
+          "value": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "property_access"
+        },
+        {
           "type": "SYMBOL",
           "name": "call"
         }
@@ -841,13 +854,16 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_identifier_simple"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "property_access"
+              "name": "_expression"
             }
           ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
         },
         {
           "type": "STRING",

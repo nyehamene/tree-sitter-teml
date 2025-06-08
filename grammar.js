@@ -55,7 +55,13 @@ module.exports = grammar({
 
     _literal: ($) => choice($.string, $.number, $.bool),
 
-    _expression: ($) => choice($._literal, $.call),
+    _expression: ($) =>
+      choice(
+        $._literal,
+        alias($._identifier_simple, $.identifier),
+        $.property_access,
+        $.call,
+      ),
 
     operator: () => choice(">", "<", "=", "not", "and", "or"),
 
@@ -158,11 +164,7 @@ module.exports = grammar({
       ),
 
     call: ($) =>
-      seq(
-        "(",
-        choice($.operator, $._identifier_simple, $.property_access),
-        ")",
-      ),
+      seq("(", choice($.operator, $._expression), repeat($._expression), ")"),
 
     property_access: ($) =>
       seq(
