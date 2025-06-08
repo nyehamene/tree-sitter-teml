@@ -52,7 +52,7 @@
   key: (identifier) @tag.attribute)
 
 (property
-  name: (identifier) @variable.member
+  name: (identifier) @variable.parameter
   type: (identifier) @type)
 
 (using_declaration
@@ -65,5 +65,5 @@
 (document_declaration
   name: (identifier) @type.definition)
 
-((element tag: (identifier) @tag)
- (#is-not? @tag "component" "document"))
+((element tag: (identifier) @function)
+ (#is-not? @function "component" "document"))

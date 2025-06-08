@@ -21,24 +21,25 @@
 
 (document Foo [a: A]
 //                ^ type
-//             ^ variable.member
+//             ^ variable.parameter
 //        ^^^ type.definition
 // ^^^^^^ keyword
 
 	(foo {key: "value"})
 	//         ^^^^^^^ string
 	//    ^^^ tag.attribute
-	// ^ tag
+	// ^ function
 )
 
 (component Foo [a: A]
 //                 ^ type
-//              ^ variable.member
+//              ^ variable.parameter
 //         ^^^ type.definition
 // ^^^^^^^ keyword
 
-	(foo {key: "value"})
+	(foo {key: "value"} "foo")
+	//                  ^^^^^ string
 	//         ^^^^^^^ string
 	//    ^^^ tag.attribute
-	// ^ tag
+	// ^ function
 )

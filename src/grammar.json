@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "teml",
   "word": "_identifier_simple",
   "rules": {
@@ -81,7 +80,7 @@
     },
     "_identifier_simple": {
       "type": "PATTERN",
-      "value": "[a-zA-Z][a-zA-Z-_]*"
+      "value": "[a-zA-Z][a-zA-Z[0-9]-_]*"
     },
     "_identifier_qualified": {
       "type": "SEQ",
@@ -962,6 +961,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": [],
-  "reserved": {}
+  "supertypes": []
 }
+
