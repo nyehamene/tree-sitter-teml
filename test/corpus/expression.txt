@@ -29,3 +29,23 @@ expression - string
 			(attribute
 				(identifier)
 				(string)))))
+
+===================
+expression - number
+===================
+
+(foo {a: 0
+	  b: 10})
+
+-------------------
+
+(source_file
+	(element
+		(identifier)
+		(attributes
+			(attribute
+				(identifier)
+				(number))
+			(attribute
+				(identifier)
+				(number)))))
