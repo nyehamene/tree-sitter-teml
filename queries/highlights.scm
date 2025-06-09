@@ -42,7 +42,7 @@
 
 (string) @string
 
-(number) @number
+(number) @constant.numeric
 
 (template_expression
   "\\" @punctuation.special)

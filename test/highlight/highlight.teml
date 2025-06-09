@@ -52,7 +52,8 @@
 //                 ^ variable
 //              ^ variable.parameter
 
-(component Foo [] (a/foo {}))
+(component Foo [] (a/foo {a: 100}))
+//                           ^^^ constant.numeric
 //                   ^^^ function
 //                  ^ punctuation.delimiter
 //                 ^ variable
