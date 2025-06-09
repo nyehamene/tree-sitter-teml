@@ -314,7 +314,7 @@
         },
         {
           "type": "FIELD",
-          "name": "func",
+          "name": "function",
           "content": {
             "type": "CHOICE",
             "members": [
@@ -343,8 +343,12 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "_expression"
+                "type": "FIELD",
+                "name": "argument",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
               },
               {
                 "type": "CHOICE",

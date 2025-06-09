@@ -53,8 +53,9 @@
 (template_expression
   (identifier) @variable)
 
-(template_expression
-  (call . (identifier) @function))
+(call argument: (identifier) @variable)
+
+(call function: (identifier) @function)
 
 (member_access
   "/" @punctuation.delimiter)
@@ -65,6 +66,9 @@
 
 (attribute
   key: (identifier) @tag.attribute)
+
+(attribute
+  value: (identifier) @variable)
 
 (property
   name: (identifier) @variable.parameter)

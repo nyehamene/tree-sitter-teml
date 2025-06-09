@@ -22,10 +22,13 @@
 	name: (identifier) @local.definition
 	type: (identifier) @local.reference)
 
+(attribute
+	value: (identifier) @local.reference)
+
 (element
 	tag: (identifier) @local.reference)
 
 (template_expression
 	(identifier) @local.reference)
 
-(call . (identifier) @local.reference)
+(call (identifier) @local.reference)

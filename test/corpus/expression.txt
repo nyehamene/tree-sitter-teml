@@ -184,7 +184,7 @@ expression - call - member access
 					(attribute
 						key: (identifier)
 						value: (call
-									func: (member_access
+									function: (member_access
 										object: (identifier)
 										member: (identifier)))))))))
 

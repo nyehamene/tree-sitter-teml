@@ -84,10 +84,10 @@ module.exports = grammar({
       seq(
         "(",
         field(
-          "func",
+          "function",
           choice($.operator, $.member_access, $.identifier, $.call),
         ),
-        repeat(seq($._expression, optional(","))),
+        repeat(seq(field("argument", $._expression), optional(","))),
         ")",
       ),
 

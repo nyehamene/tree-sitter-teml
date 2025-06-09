@@ -44,5 +44,7 @@
     member: (identifier) @name)) @reference.call
 
 (call
-  .
-  (identifier) @name) @reference.call
+  function: (identifier) @name) @reference.call
+
+(call
+  argument: (identifier) @name) @reference.variable
