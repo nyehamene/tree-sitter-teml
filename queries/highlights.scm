@@ -65,5 +65,4 @@
 (document_declaration
   name: (identifier) @type.definition)
 
-((element tag: (identifier) @function)
- (#is-not? @function "component" "document"))
+(element tag: (identifier) @function)
