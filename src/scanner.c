@@ -36,6 +36,8 @@ bool tree_sitter_teml_external_scanner_scan(void *payload, TSLexer *lexer,
 
 static void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
 
+static void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
+
 static bool scan_string_content(void *payload, TSLexer *lexer,
                                 const bool *valid_symbols) {
   // is the lexer scanning a line string content
@@ -85,6 +87,10 @@ static bool scan_string_content(void *payload, TSLexer *lexer,
       advance(lexer);
       if (lexer->lookahead == '(') {
         return has_content;
+      }
+      // escape
+      if (lexer->lookahead == '\\') {
+        skip(lexer);
       }
       break;
     default:

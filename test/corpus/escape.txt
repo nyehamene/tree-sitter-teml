@@ -1,0 +1,14 @@
+=====================
+escaped template
+=====================
+
+(component Foo [] "foo \\(foo)")
+
+---------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(string))))
