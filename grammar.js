@@ -14,6 +14,16 @@ module.exports = grammar({
 
   extras: ($) => [$.comment, /\s/],
 
+  externals: ($) => [
+    $._quoted_string_content,
+    $._line_string_content,
+
+    //
+    // to be used by the external scannar only
+    //
+    $._ignored,
+  ],
+
   rules: {
     source_file: ($) =>
       seq(
@@ -29,9 +39,24 @@ module.exports = grammar({
 
     _identifier_or_member_access: ($) => choice($.identifier, $.member_access),
 
-    _string_quoted: () => token(seq('"', /[^"]*/, '"')),
+    _quoted_string_content: () => /[^"\n]/,
 
-    _string_line: () => token(seq("--", /[^\n]*/)),
+    _string_quoted: ($) =>
+      seq(
+        '"',
+        repeat(choice($._quoted_string_content, $.template_expression)),
+        '"',
+      ),
+
+    _line_string_content: () => /[^\n]/,
+
+    _string_line: ($) =>
+      prec.left(
+        seq(
+          "--",
+          repeat(choice($._line_string_content, $.template_expression)),
+        ),
+      ),
 
     // TODO: support escape sequences are expression; may require external scanner
     string: ($) => choice($._string_quoted, $._string_line),
@@ -40,15 +65,31 @@ module.exports = grammar({
 
     bool: () => choice("true", "false"),
 
-    _literal: ($) => choice($.string, $.number, $.bool),
-
     _primary_expression: ($) =>
-      choice($._string_quoted, $.number, $.bool, $.identifier),
+      choice(alias($._string_quoted, $.string), $.number, $.bool, $.identifier),
 
-    _expression: ($) =>
-      choice($._literal, $.identifier, $.member_access, $.call),
+    template_expression: ($) =>
+      seq(
+        "\\",
+        token.immediate("("),
+        choice($._primary_expression, $.call),
+        ")",
+      ),
+
+    _expression: ($) => choice($._primary_expression, $.member_access, $.call),
 
     operator: () => choice(">", "<", "=", "not", "and", "or"),
+
+    call: ($) =>
+      seq(
+        "(",
+        field(
+          "func",
+          choice($.operator, $.member_access, $.identifier, $.call),
+        ),
+        repeat(seq($._expression, optional(","))),
+        ")",
+      ),
 
     package_declaration: ($) =>
       seq(
@@ -142,17 +183,6 @@ module.exports = grammar({
 
     attribute: ($) =>
       seq(field("key", $.identifier), ":", field("value", $._expression)),
-
-    call: ($) =>
-      seq(
-        "(",
-        field(
-          "func",
-          choice($.operator, $.member_access, $.identifier, $.call),
-        ),
-        repeat(seq($._expression, optional(","))),
-        ")",
-      ),
 
     member_access: ($) =>
       seq(

@@ -1,0 +1,93 @@
+================================
+template expression - identifier
+================================
+
+(component Foo [] "foo \(bar)")
+
+--------------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(string
+				(template_expression
+					(identifier))))))
+
+============================
+template expression - bool
+============================
+
+(component Foo [] "foo \(true)" "foo \(false)")
+
+----------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(string
+				(template_expression
+					(bool)))
+			(string
+				(template_expression
+					(bool))))))
+
+============================
+template expression - call
+============================
+
+(component Foo [] "foo \((> a b))")
+
+----------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(string
+				(template_expression
+					(call
+						(operator)
+						(identifier)
+						(identifier)))))))
+
+============================
+template expression - string
+============================
+
+(component Foo [] "foo \("foo")")
+
+----------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(string
+				(template_expression
+					(string))))))
+
+============================
+template expression - nested
+============================
+
+(component Foo [] "foo \("foo \("bar")")")
+
+----------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(string
+				(template_expression
+					(string
+						(template_expression
+							(string))))))))
+
