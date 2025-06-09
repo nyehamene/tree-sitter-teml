@@ -44,6 +44,12 @@
 
 (number) @number
 
+(template_expression
+  "\\" @punctuation.special)
+
+(member_access
+  "/" @punctuation.delimiter)
+
 (package_declaration name: (identifier) @variable.package)
 
 (import_declaration name: (identifier) @variable.package.import)
@@ -52,8 +58,18 @@
   key: (identifier) @tag.attribute)
 
 (property
-  name: (identifier) @variable.parameter
+  name: (identifier) @variable.parameter)
+
+(property
   type: (identifier) @type)
+
+(property
+  type: (member_access
+    member: (identifier) @type))
+
+(property
+  type: (member_access
+    object: (identifier) @variable))
 
 (using_declaration
   name: (identifier) @variable
@@ -66,3 +82,11 @@
   name: (identifier) @type.definition)
 
 (element tag: (identifier) @function)
+
+(element
+  tag: (member_access
+    object: (identifier) @variable))
+
+(element
+  tag: (member_access
+    member: (identifier) @function))

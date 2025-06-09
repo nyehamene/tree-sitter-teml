@@ -37,9 +37,22 @@
 //         ^^^ type.definition
 // ^^^^^^^ keyword
 
-	(foo {key: "value"} "foo")
-	//                  ^^^^^ string
+	(foo {key: "value"} "foo \(id)")
+	//                  ^^^^^^^^^^^ string
+	//                        ^ punctuation.bracket
+	//                       ^ punctuation.special
 	//         ^^^^^^^ string
 	//    ^^^ tag.attribute
 	// ^ function
 )
+
+(component Foo [a: a/A])
+//                   ^ type
+//                  ^ punctuation.delimiter
+//                 ^ variable
+//              ^ variable.parameter
+
+(component Foo [] (a/foo {}))
+//                   ^^^ function
+//                  ^ punctuation.delimiter
+//                 ^ variable
