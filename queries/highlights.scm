@@ -47,6 +47,15 @@
 (template_expression
   "\\" @punctuation.special)
 
+(template_expression
+  (number) @number)
+
+(template_expression
+  (identifier) @variable)
+
+(template_expression
+  (call . (identifier) @function))
+
 (member_access
   "/" @punctuation.delimiter)
 

@@ -25,7 +25,7 @@
 (element
 	tag: (identifier) @local.reference)
 
-(call (identifier) @local.reference)
-
 (template_expression
 	(identifier) @local.reference)
+
+(call . (identifier) @local.reference)

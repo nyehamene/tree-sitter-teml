@@ -42,3 +42,7 @@
 (element
   tag: (member_access
     member: (identifier) @name)) @reference.call
+
+(call
+  .
+  (identifier) @name) @reference.call
