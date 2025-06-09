@@ -10,7 +10,7 @@
 module.exports = grammar({
   name: "teml",
 
-  word: ($) => $._identifier_simple,
+  word: ($) => $.identifier,
 
   extras: ($) => [$.comment, /\s/],
 
@@ -25,26 +25,15 @@ module.exports = grammar({
 
     comment: () => token(seq("//", /[^\n]*/)),
 
-    _identifier_simple: () => /[a-zA-Z][a-zA-Z[0-9]-_]*/,
+    identifier: () => /[a-zA-Z][a-zA-Z[0-9]-_]*/,
 
-    _identifier_qualified: ($) =>
-      seq(
-        $._identifier_simple,
-        repeat1(seq(token.immediate("/"), $._identifier_simple)),
-      ),
+    _identifier_or_member_access: ($) => choice($.identifier, $.member_access),
 
-    identifier: ($) =>
-      choice(
-        alias($._identifier_simple, "simple"),
-        alias($._identifier_qualified, "qualified"),
-      ),
-
-    // TODO: support escape sequences are expression; may require external scanner
     _string_quoted: () => token(seq('"', /[^"]*/, '"')),
 
-    // TODO: support escape sequences are expression; may require external scanner
     _string_line: () => token(seq("--", /[^\n]*/)),
 
+    // TODO: support escape sequences are expression; may require external scanner
     string: ($) => choice($._string_quoted, $._string_line),
 
     number: () => choice("0", /[1-9][0-9]*/),
@@ -53,13 +42,11 @@ module.exports = grammar({
 
     _literal: ($) => choice($.string, $.number, $.bool),
 
+    _primary_expression: ($) =>
+      choice($._string_quoted, $.number, $.bool, $.identifier),
+
     _expression: ($) =>
-      choice(
-        $._literal,
-        alias($._identifier_simple, $.identifier),
-        $.property_access,
-        $.call,
-      ),
+      choice($._literal, $.identifier, $.member_access, $.call),
 
     operator: () => choice(">", "<", "=", "not", "and", "or"),
 
@@ -67,7 +54,7 @@ module.exports = grammar({
       seq(
         "(",
         "package",
-        field("name", alias($._identifier_simple, $.identifier)),
+        field("name", $.identifier),
         field("path", alias($._string_quoted, $.string)),
         ")",
       ),
@@ -76,13 +63,12 @@ module.exports = grammar({
       seq(
         "(",
         "import",
-        field("name", alias($._identifier_simple, $.identifier)),
+        field("name", $.identifier),
         field("path", alias($._string_quoted, $.string)),
         ")",
       ),
 
-    _using_single: ($) =>
-      seq(field("name", alias($._identifier_simple, $.identifier))),
+    _using_single: ($) => seq(field("name", $.identifier)),
 
     _using_multiple: ($) =>
       seq(
@@ -90,7 +76,7 @@ module.exports = grammar({
         optional(
           repeat(
             seq(
-              field("name", alias($._identifier_simple, $.identifier)),
+              field("name", $.identifier),
               optional(","), // allow trailing comma
             ),
           ),
@@ -103,7 +89,7 @@ module.exports = grammar({
         "(",
         "using",
         choice($._using_single, $._using_multiple),
-        field("from", alias($._identifier_simple, $.identifier)),
+        field("from", $.identifier),
         ")",
       ),
 
@@ -111,7 +97,7 @@ module.exports = grammar({
       seq(
         "(",
         "document",
-        optional(field("name", alias($._identifier_simple, $.identifier))),
+        optional(field("name", $.identifier)),
         $.properties,
         optional($.template),
         ")",
@@ -121,7 +107,7 @@ module.exports = grammar({
       seq(
         "(",
         "component",
-        field("name", alias($._identifier_simple, $.identifier)),
+        field("name", $.identifier),
         $.properties,
         optional($.template),
         ")",
@@ -131,15 +117,15 @@ module.exports = grammar({
 
     property: ($) =>
       seq(
-        field("name", alias($._identifier_simple, $.identifier)),
+        field("name", $.identifier),
         ":",
-        field("type", $.identifier),
+        field("type", $._identifier_or_member_access),
       ),
 
     element: ($) =>
       seq(
         "(",
-        field("tag", $.identifier),
+        field("tag", $._identifier_or_member_access),
         repeat(choice($.attributes, alias($._element_content, $.children))),
         ")",
       ),
@@ -148,45 +134,31 @@ module.exports = grammar({
 
     attributes: ($) =>
       seq(
-        optional(field("directive", seq("#", $.identifier))),
+        optional(field("directive", seq("#", $._identifier_or_member_access))),
         "{",
         optional(repeat1(seq($.attribute, optional(",")))),
         "}",
       ),
 
     attribute: ($) =>
-      seq(
-        field("key", alias($._identifier_simple, $.identifier)),
-        ":",
-        field("value", $._expression),
-      ),
+      seq(field("key", $.identifier), ":", field("value", $._expression)),
 
     call: ($) =>
       seq(
         "(",
         field(
           "func",
-          choice(
-            $.operator,
-            $.property_access,
-            alias($._identifier_simple, $.identifier),
-            $.call,
-          ),
+          choice($.operator, $.member_access, $.identifier, $.call),
         ),
         repeat(seq($._expression, optional(","))),
         ")",
       ),
 
-    property_access: ($) =>
+    member_access: ($) =>
       seq(
-        field(
-          "object",
-          alias(
-            repeat1(seq($._identifier_simple, token.immediate("."))),
-            $.identifier,
-          ),
-        ),
-        field("property", alias($._identifier_simple, $.identifier)),
+        field("object", $.identifier),
+        token.immediate("/"),
+        choice(field("member", $.identifier), $.member_access),
       ),
 
     template: ($) => repeat1(choice($.string, $.element)),

@@ -170,7 +170,11 @@ component declaration
 	(component_declaration
 		name: (identifier)
 		(properties
-			(property name: (identifier) type: (identifier)))))
+			(property
+				name: (identifier)
+				type: (member_access
+					object: (identifier)
+					member: (identifier))))))
 
 ======================
 component declaration: invalid name

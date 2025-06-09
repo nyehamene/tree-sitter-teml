@@ -17,7 +17,9 @@ element
 		(template
 			(element tag: (identifier))
 			(element
-				tag: (identifier)
+				tag: (member_access
+					object: (identifier)
+					member: (identifier))
 				(attributes))
 			(element
 				tag: (identifier)
@@ -66,7 +68,9 @@ element - attribute directive
 			(element
 				tag: (identifier)
 				(attributes
-					directive: (identifier))))))
+					directive: (member_access
+						object: (identifier)
+						member: (identifier)))))))
 
 =================
 element - multiple attributes

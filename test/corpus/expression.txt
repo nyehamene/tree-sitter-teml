@@ -165,28 +165,28 @@ expression - call - identifier
 							(identifier))))))))
 
 ===================================
-expression - call - property access
+expression - call - member access
 ===================================
 
 (component foo []
-	(foo {a: (a.b)}))
+	(foo {a: (a/b)}))
 
 -----------------------------------
 
 (source_file
 	(component_declaration
-		(identifier)
+		name: (identifier)
 		(properties)
 		(template
 			(element
-				(identifier)
+				tag: (identifier)
 				(attributes
 					(attribute
-						(identifier)
-						(call
-							(property_access
-								(identifier)
-								(identifier)))))))))
+						key: (identifier)
+						value: (call
+									func: (member_access
+										object: (identifier)
+										member: (identifier)))))))))
 
 =========================================
 expression - call
@@ -195,7 +195,7 @@ namespaced identifier as func not allowed
 =========================================
 
 (component foo []
-	(foo {a: (a/b)}))
+	(foo {a: (a.b)}))
 
 -----------------------------------------
 
