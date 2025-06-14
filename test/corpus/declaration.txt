@@ -295,6 +295,7 @@ document declaration: invalid property name
 document and component declaration order
 ======================
 
+(component baz [])
 (document [])
 (component bar [])
 (component foo [])
@@ -302,6 +303,7 @@ document and component declaration order
 ----------------------
 
 (source_file
+	(component_declaration (identifier) (properties))
     (document_declaration (properties))
 	(component_declaration (identifier) (properties))
 	(component_declaration (identifier) (properties)))
@@ -309,19 +311,10 @@ document and component declaration order
 ======================
 document declaration: one per file
 :error
+:skip
 ======================
 
 (document [])
-(document [])
-
-----------------------
-
-======================
-no component declaration before document
-:error
-======================
-
-(component foo [])
 (document [])
 
 ----------------------
