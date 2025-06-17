@@ -51,8 +51,9 @@ element - attribute directive
 =================
 
 (component foo []
-	(foo #foo{})
-	(foo #a/foo{}))
+	(foo #a{})
+	(foo #a/b{})
+	(foo #a/b/c{}))
 
 -----------------
 
@@ -70,6 +71,14 @@ element - attribute directive
 				(attributes
 					directive: (member_access
 						object: (identifier)
+						member: (identifier))))
+			(element
+				tag: (identifier)
+				(attributes
+					directive: (member_access
+						object: (member_access
+							object: (identifier)
+							member: (identifier))
 						member: (identifier)))))))
 
 =================

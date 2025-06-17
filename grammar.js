@@ -185,9 +185,9 @@ module.exports = grammar({
 
     member_access: ($) =>
       seq(
-        field("object", $.identifier),
+        field("object", $._identifier_or_member_access),
         token.immediate("/"),
-        choice(field("member", $.identifier), $.member_access),
+        field("member", $.identifier),
       ),
 
     template: ($) => repeat1(choice($.string, $.element)),

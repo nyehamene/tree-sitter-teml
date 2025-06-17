@@ -67,7 +67,7 @@
         "members": [
           {
             "type": "STRING",
-            "value": "//"
+            "value": ";"
           },
           {
             "type": "PATTERN",
@@ -862,7 +862,7 @@
           "name": "object",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "_identifier_or_member_access"
           }
         },
         {
@@ -873,21 +873,12 @@
           }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "member",
-              "content": {
-                "type": "SYMBOL",
-                "name": "identifier"
-              }
-            },
-            {
-              "type": "SYMBOL",
-              "name": "member_access"
-            }
-          ]
+          "type": "FIELD",
+          "name": "member",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         }
       ]
     },

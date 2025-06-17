@@ -287,7 +287,7 @@
     "fields": {
       "member": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "identifier",
@@ -302,19 +302,13 @@
           {
             "type": "identifier",
             "named": true
+          },
+          {
+            "type": "member_access",
+            "named": true
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "member_access",
-          "named": true
-        }
-      ]
     }
   },
   {
