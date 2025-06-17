@@ -32,7 +32,7 @@ module.exports = grammar({
         repeat(choice($.document_declaration, $.component_declaration)),
       ),
 
-    comment: () => token(seq("//", /[^\n]*/)),
+    comment: () => token(seq(";", /[^\n]*/)),
 
     identifier: () => /[a-zA-Z][a-zA-Z[0-9]-_]*/,
 
