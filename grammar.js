@@ -71,12 +71,27 @@ module.exports = grammar({
       seq(
         "\\",
         token.immediate("("),
-        choice($._primary_expression, $.conditional),
+        choice($._primary_expression, $.if_expression, $.conditional),
         ")",
       ),
 
     _expression: ($) =>
-      choice($._primary_expression, $.member_access, $.conditional),
+      choice(
+        $._primary_expression,
+        $.member_access,
+        $.if_expression,
+        $.conditional,
+      ),
+
+    if_expression: ($) =>
+      seq(
+        "(",
+        "if",
+        field("condition", choice($.identifier, $.bool)),
+        field("then", $._expression),
+        optional(field("else", $._expression)),
+        ")",
+      ),
 
     conditional: ($) =>
       seq(
