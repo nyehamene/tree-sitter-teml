@@ -32,7 +32,7 @@
 	(identifier) @local.reference)
 
 (conditional
-	(identifier) @local.reference)
+	target: (identifier) @local.reference)
 
 (if_expression
-	(identifier) @local.reference)
+	condition: (identifier) @local.reference)

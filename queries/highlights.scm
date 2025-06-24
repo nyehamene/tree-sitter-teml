@@ -93,3 +93,9 @@
 (element
   tag: (member_access
     member: (identifier) @function))
+
+(if_expression
+  condition: (identifier) @variable)
+
+(conditional
+  target: (identifier) @variable)
