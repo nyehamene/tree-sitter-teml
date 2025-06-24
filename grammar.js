@@ -71,12 +71,12 @@ module.exports = grammar({
       seq(
         "\\",
         token.immediate("("),
-        choice($._primary_expression, $.conditional, $.call),
+        choice($._primary_expression, $.conditional),
         ")",
       ),
 
     _expression: ($) =>
-      choice($._primary_expression, $.member_access, $.conditional, $.call),
+      choice($._primary_expression, $.member_access, $.conditional),
 
     conditional: ($) =>
       seq(
@@ -93,14 +93,6 @@ module.exports = grammar({
         ":",
         field("value", $._expression),
         optional(","),
-      ),
-
-    call: ($) =>
-      seq(
-        "(",
-        field("function", choice($.member_access, $.identifier, $.call)),
-        repeat(seq(field("argument", $._expression), optional(","))),
-        ")",
       ),
 
     package_declaration: ($) =>

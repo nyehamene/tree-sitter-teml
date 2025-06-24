@@ -30,5 +30,3 @@
 
 (template_expression
 	(identifier) @local.reference)
-
-(call (identifier) @local.reference)

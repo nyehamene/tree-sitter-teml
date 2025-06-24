@@ -8,9 +8,6 @@
 ] @keyword
 
 [
-  "and"
-  "or"
-  "not"
   "cond"
 ] @keyword.operator
 
@@ -48,10 +45,6 @@
 
 (template_expression
   (identifier) @variable)
-
-(call argument: (identifier) @variable)
-
-(call function: (identifier) @function)
 
 (member_access
   "/" @punctuation.delimiter)

@@ -42,9 +42,3 @@
 (element
   tag: (member_access
     member: (identifier) @name)) @reference.call
-
-(call
-  function: (identifier) @name) @reference.call
-
-(call
-  argument: (identifier) @name) @reference.variable

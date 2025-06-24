@@ -22,10 +22,6 @@
             "named": true
           },
           {
-            "type": "call",
-            "named": true
-          },
-          {
             "type": "conditional",
             "named": true
           },
@@ -87,64 +83,6 @@
     "type": "bool",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "call",
-    "named": true,
-    "fields": {
-      "argument": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "call",
-            "named": true
-          },
-          {
-            "type": "conditional",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "member_access",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          }
-        ]
-      },
-      "function": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "member_access",
-            "named": true
-          }
-        ]
-      }
-    }
   },
   {
     "type": "children",
@@ -393,10 +331,6 @@
             "named": true
           },
           {
-            "type": "call",
-            "named": true
-          },
-          {
             "type": "conditional",
             "named": true
           },
@@ -571,10 +505,6 @@
       "types": [
         {
           "type": "bool",
-          "named": true
-        },
-        {
-          "type": "call",
           "named": true
         },
         {
