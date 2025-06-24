@@ -4,6 +4,7 @@
   "using"
   "component"
   "document"
+  "enum"
 ] @keyword
 
 [

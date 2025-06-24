@@ -1,0 +1,139 @@
+==================
+simple property type
+==================
+
+(document [p: A])
+
+-----------------
+
+(source_file
+	(document_declaration
+		(properties
+			(property
+				name: (identifier)
+				type: (identifier)))))
+
+==================
+qualified property type
+==================
+
+(document [p: a/b/C])
+
+------------------
+
+(source_file
+	(document_declaration
+		(properties
+			(property
+				name: (identifier)
+				type: (member_access
+					object: (member_access
+						object: (identifier)
+						member: (identifier))
+					member: (identifier))))))
+
+==================
+enum property type - string
+==================
+
+(document [p: (enum "A" "B")])
+
+------------------
+
+(source_file
+	(document_declaration
+		(properties
+			(property
+				name: (identifier)
+				type: (enum
+					constant: (string)
+					constant: (string))))))
+
+==================
+enum property type - number
+==================
+
+(document [p: (enum 10 20)])
+
+------------------
+
+(source_file
+	(document_declaration
+		(properties
+			(property
+				name: (identifier)
+				type: (enum
+					constant: (number)
+					constant: (number))))))
+
+==================
+component - simple property type
+==================
+
+(component C [p: A])
+
+-----------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties
+			(property
+				name: (identifier)
+				type: (identifier)))))
+
+==================
+component - qualified property type
+==================
+
+(component C [p: a/b/C])
+
+------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties
+			(property
+				name: (identifier)
+				type: (member_access
+					object: (member_access
+						object: (identifier)
+						member: (identifier))
+					member: (identifier))))))
+
+==================
+component - enum property type - string
+==================
+
+(component C [p: (enum "A" "B")])
+
+------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties
+			(property
+				name: (identifier)
+				type: (enum
+					constant: (string)
+					constant: (string))))))
+
+==================
+component - enum property type - number
+==================
+
+(component C [p: (enum 10 20)])
+
+------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties
+			(property
+				name: (identifier)
+				type: (enum
+					constant: (number)
+					constant: (number))))))

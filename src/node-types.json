@@ -256,6 +256,26 @@
     }
   },
   {
+    "type": "enum",
+    "named": true,
+    "fields": {
+      "constant": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "import_declaration",
     "named": true,
     "fields": {
@@ -380,6 +400,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "enum",
+            "named": true
+          },
           {
             "type": "identifier",
             "named": true
@@ -590,6 +614,10 @@
   },
   {
     "type": "document",
+    "named": false
+  },
+  {
+    "type": "enum",
     "named": false
   },
   {

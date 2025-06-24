@@ -156,10 +156,16 @@ module.exports = grammar({
     properties: ($) => seq("[", repeat(seq($.property, optional(","))), "]"),
 
     property: ($) =>
+      seq(field("name", $.identifier), ":", field("type", $._type)),
+
+    _type: ($) => choice($._identifier_or_member_access, $.enum),
+
+    enum: ($) =>
       seq(
-        field("name", $.identifier),
-        ":",
-        field("type", $._identifier_or_member_access),
+        "(",
+        "enum",
+        repeat(field("constant", choice($.string, $.number))),
+        ")",
       ),
 
     element: ($) =>
