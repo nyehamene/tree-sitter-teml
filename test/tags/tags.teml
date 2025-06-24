@@ -1,27 +1,27 @@
 (package p "path/to/package")
-//       ^ definition.package
+;        ^ definition.package
 
 (import i "path/to/package")
-//      ^ definition.package.import
+;       ^ definition.package.import
 
 (using a i)
-//     ^ definition.variable
-//       ^ reference.package.import
+;      ^ definition.variable
+;        ^ reference.package.import
 
 (using [a] i)
-//      ^ definition.variable
-//         ^ reference.package.import
+;       ^ definition.variable
+;          ^ reference.package.import
 
 (document foo [a: A])
-//        ^^^ definition.class
-//             ^ definition.variable.member
-//                ^ reference.class
+;         ^^^ definition.class
+;              ^ definition.variable.member
+;                 ^ reference.class
 
 (component foo [a: A])
-//         ^^^ definition.class
-//              ^ definition.variable.member
-//                 ^ reference.class
+;          ^^^ definition.class
+;               ^ definition.variable.member
+;                  ^ reference.class
 
 (component foo []
 	(foo {a: a}))
-	// ^ reference.call
+	;^^^ reference.call

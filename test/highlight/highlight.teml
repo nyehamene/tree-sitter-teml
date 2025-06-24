@@ -1,59 +1,59 @@
 (package p "path/to/package")
-//         ^^^^^^^^^^^^^^^^^ string
-//       ^ variable.package
-// ^^^^^ keyword
+;          ^^^^^^^^^^^^^^^^^ string
+;        ^ variable.package
+;^^^^^^^ keyword
 
 (import p "path/to/package")
-//         ^^^^^^^^^^^^^^^^  string
-//      ^ variable.package.import
-// ^^^^  keyword
+;          ^^^^^^^^^^^^^^^^  string
+;       ^ variable.package.import
+;^^^^^^  keyword
 
 (using p i)
-//       ^ variable.package.import
-//     ^ variable
-// ^^^ keyword
+;        ^ variable.package.import
+;      ^ variable
+;^^^^^ keyword
 
 (using [a b] i)
-//           ^ variable.package.import
-//        ^ variable
-//      ^ variable
-// ^^^ keyword
+;            ^ variable.package.import
+;         ^ variable
+;       ^ variable
+;^^^^^ keyword
 
 (document Foo [a: A]
-//                ^ type
-//             ^ variable.parameter
-//        ^^^ type.definition
-// ^^^^^^ keyword
+;                 ^ type
+;              ^ variable.parameter
+;         ^^^ type.definition
+;^^^^^^^^ keyword
 
 	(foo {key: "value"})
-	//         ^^^^^^^ string
-	//    ^^^ tag.attribute
-	// ^ function
+	;          ^^^^^^^ string
+	;     ^^^ tag.attribute
+	;^^^ function
 )
 
 (component Foo [a: A]
-//                 ^ type
-//              ^ variable.parameter
-//         ^^^ type.definition
-// ^^^^^^^ keyword
+;                  ^ type
+;               ^ variable.parameter
+;          ^^^ type.definition
+;^^^^^^^^^ keyword
 
 	(foo {key: "value"} "foo \(id)")
-	//                  ^^^^^^^^^^^ string
-	//                        ^ punctuation.bracket
-	//                       ^ punctuation.special
-	//         ^^^^^^^ string
-	//    ^^^ tag.attribute
-	// ^ function
+	;                   ^^^^^^^^^^^ string
+	;                         ^ punctuation.bracket
+	;                        ^ punctuation.special
+	;          ^^^^^^^ string
+	;     ^^^ tag.attribute
+	;^^^ function
 )
 
 (component Foo [a: a/A])
-//                   ^ type
-//                  ^ punctuation.delimiter
-//                 ^ variable
-//              ^ variable.parameter
+;                    ^ type
+;                   ^ punctuation.delimiter
+;                  ^ variable
+;               ^ variable.parameter
 
 (component Foo [] (a/foo {a: 100}))
-//                           ^^^ constant.numeric
-//                   ^^^ function
-//                  ^ punctuation.delimiter
-//                 ^ variable
+;                            ^^^ constant.numeric
+;                    ^^^ function
+;                   ^ punctuation.delimiter
+;                  ^ variable

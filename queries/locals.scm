@@ -30,3 +30,9 @@
 
 (template_expression
 	(identifier) @local.reference)
+
+(conditional
+	(identifier) @local.reference)
+
+(if_expression
+	(identifier) @local.reference)

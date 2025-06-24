@@ -9,6 +9,7 @@
 
 [
   "cond"
+  "if"
 ] @keyword.operator
 
 [
