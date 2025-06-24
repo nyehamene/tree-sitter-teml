@@ -247,6 +247,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "conditional"
+            },
+            {
+              "type": "SYMBOL",
               "name": "call"
             }
           ]
@@ -275,35 +279,6 @@
         {
           "type": "SYMBOL",
           "name": "call"
-        }
-      ]
-    },
-    "operator": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": ">"
-        },
-        {
-          "type": "STRING",
-          "value": "<"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "STRING",
-          "value": "not"
-        },
-        {
-          "type": "STRING",
-          "value": "and"
-        },
-        {
-          "type": "STRING",
-          "value": "or"
         }
       ]
     },
@@ -403,10 +378,6 @@
           "content": {
             "type": "CHOICE",
             "members": [
-              {
-                "type": "SYMBOL",
-                "name": "operator"
-              },
               {
                 "type": "SYMBOL",
                 "name": "member_access"

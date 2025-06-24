@@ -15,12 +15,6 @@
 ] @keyword.operator
 
 [
-  ">"
-  "<"
-  "="
-] @operator
-
-[
   "true"
   "false"
 ] @constant.bool

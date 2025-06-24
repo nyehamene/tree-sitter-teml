@@ -141,10 +141,6 @@
           {
             "type": "member_access",
             "named": true
-          },
-          {
-            "type": "operator",
-            "named": true
           }
         ]
       }
@@ -371,11 +367,6 @@
     "fields": {}
   },
   {
-    "type": "operator",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "option",
     "named": true,
     "fields": {
@@ -587,6 +578,10 @@
           "named": true
         },
         {
+          "type": "conditional",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -664,18 +659,6 @@
     "named": false
   },
   {
-    "type": "<",
-    "named": false
-  },
-  {
-    "type": "=",
-    "named": false
-  },
-  {
-    "type": ">",
-    "named": false
-  },
-  {
     "type": "[",
     "named": false
   },
@@ -685,10 +668,6 @@
   },
   {
     "type": "]",
-    "named": false
-  },
-  {
-    "type": "and",
     "named": false
   },
   {
@@ -722,14 +701,6 @@
   },
   {
     "type": "import",
-    "named": false
-  },
-  {
-    "type": "not",
-    "named": false
-  },
-  {
-    "type": "or",
     "named": false
   },
   {

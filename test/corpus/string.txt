@@ -36,24 +36,24 @@ template expression - bool
 					(bool))))))
 
 ============================
-template expression - call
+template expression - conditional
 ============================
 
-(component Foo [] "foo \((> a b))")
+(component Foo [] "foo \((cond a 0: "yes" 1: "no"))")
 
 ----------------------------
 
 (source_file
 	(component_declaration
-		(identifier)
+		name: (identifier)
 		(properties)
 		(template
 			(string
 				(template_expression
-					(call
-						(operator)
-						(identifier)
-						(identifier)))))))
+					(conditional
+						target: (identifier)
+						(option constant: (number) value: (string))
+						(option constant: (number) value: (string))))))))
 
 ============================
 template expression - string

@@ -118,30 +118,6 @@ expression - call - comma
 						(number)
 						(identifier))))))))
 
-==========================
-expression - call operator
-==========================
-
-(component foo []
-	(foo {a: (> a "")}))
-
---------------------------
-
-(source_file
-	(component_declaration
-		(identifier)
-		(properties)
-		(template
-			(element
-			(identifier)
-			(attributes
-				(attribute
-					(identifier)
-					(call
-						(operator)
-						(identifier)
-						(string))))))))
-
 ===============================
 expression - call - identifier
 ===============================
