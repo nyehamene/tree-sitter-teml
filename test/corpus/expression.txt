@@ -240,3 +240,59 @@ expression - call - number as func not allowed
 	(foo {a: (0)}))
 
 ----------------------------------------------
+
+==============================================
+conditional
+==============================================
+
+(component foo []
+	(foo {a: (cond f "A": "yes" "B": "no")}))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(element
+				tag: (identifier)
+				(attributes
+					(attribute
+						key: (identifier)
+						value: (conditional
+							target: (identifier)
+							(option
+								constant: (string)
+								value: (string))
+							(option
+								constant: (string)
+								value: (string)))))))))
+
+==============================================
+conditional - comma separator
+==============================================
+
+(component foo []
+	(foo {a: (cond f 1: "yes", 0: "no",)}))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(element
+				tag: (identifier)
+				(attributes
+					(attribute
+						key: (identifier)
+						value: (conditional
+							target: (identifier)
+							(option
+								constant: (number)
+								value: (string))
+							(option
+								constant: (number)
+								value: (string)))))))))

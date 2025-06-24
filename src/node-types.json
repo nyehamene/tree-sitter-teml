@@ -26,6 +26,10 @@
             "named": true
           },
           {
+            "type": "conditional",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -98,6 +102,10 @@
           },
           {
             "type": "call",
+            "named": true
+          },
+          {
+            "type": "conditional",
             "named": true
           },
           {
@@ -186,6 +194,32 @@
         },
         {
           "type": "template",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "conditional",
+    "named": true,
+    "fields": {
+      "target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "option",
           "named": true
         }
       ]
@@ -340,6 +374,60 @@
     "type": "operator",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "option",
+    "named": true,
+    "fields": {
+      "constant": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "bool",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "conditional",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "package_declaration",
@@ -610,6 +698,10 @@
   },
   {
     "type": "component",
+    "named": false
+  },
+  {
+    "type": "cond",
     "named": false
   },
   {

@@ -11,6 +11,7 @@
   "and"
   "or"
   "not"
+  "cond"
 ] @keyword.operator
 
 [

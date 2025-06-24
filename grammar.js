@@ -75,9 +75,27 @@ module.exports = grammar({
         ")",
       ),
 
-    _expression: ($) => choice($._primary_expression, $.member_access, $.call),
+    _expression: ($) =>
+      choice($._primary_expression, $.member_access, $.conditional, $.call),
 
     operator: () => choice(">", "<", "=", "not", "and", "or"),
+
+    conditional: ($) =>
+      seq(
+        "(",
+        "cond",
+        field("target", $.identifier),
+        repeat(alias($._conditional_option, $.option)),
+        ")",
+      ),
+
+    _conditional_option: ($) =>
+      seq(
+        field("constant", choice($.string, $.number)),
+        ":",
+        field("value", $._expression),
+        optional(","),
+      ),
 
     call: ($) =>
       seq(
