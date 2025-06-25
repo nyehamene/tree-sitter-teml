@@ -1,0 +1,73 @@
+
+
+==============================================
+if expression - identifier
+==============================================
+
+(component foo []
+	(foo {a: (if a "yes")}))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(element
+				tag: (identifier)
+				(attributes
+					(attribute
+						key: (identifier)
+						value: (if_expression
+							condition: (identifier)
+							then: (string))))))))
+
+
+==============================================
+if expression - true
+==============================================
+
+(component foo []
+	(foo {a: (if true "yes")}))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(element
+				tag: (identifier)
+				(attributes
+					(attribute
+						key: (identifier)
+						value: (if_expression
+							condition: (bool)
+							then: (string))))))))
+
+==============================================
+if expression - false
+==============================================
+
+(component foo []
+	(foo {a: (if false "yes" 0)}))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(element
+				tag: (identifier)
+				(attributes
+					(attribute
+						key: (identifier)
+						value: (if_expression
+							condition: (bool)
+							then: (string)
+							else: (number))))))))
+
