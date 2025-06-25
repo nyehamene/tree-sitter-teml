@@ -874,8 +874,13 @@
                   "name": "attributes"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_element_content"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "template"
+                  },
+                  "named": false,
+                  "value": ""
                 }
               ]
             }
@@ -888,23 +893,6 @@
           "value": ")"
         }
       ]
-    },
-    "_element_content": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "string"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "element"
-          }
-        ]
-      }
     },
     "attributes": {
       "type": "SEQ",
@@ -1002,37 +990,41 @@
       ]
     },
     "template": {
-      "type": "REPEAT1",
+      "type": "PREC_RIGHT",
+      "value": 0,
       "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "string"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "element"
-          },
-          {
-            "type": "ALIAS",
-            "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
               "type": "SYMBOL",
-              "name": "_conditional_element"
+              "name": "string"
             },
-            "named": true,
-            "value": "conditional"
-          },
-          {
-            "type": "ALIAS",
-            "content": {
+            {
               "type": "SYMBOL",
-              "name": "_if_expression_element"
+              "name": "element"
             },
-            "named": true,
-            "value": "if_expression"
-          }
-        ]
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_conditional_element"
+              },
+              "named": true,
+              "value": "conditional"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_if_expression_element"
+              },
+              "named": true,
+              "value": "if_expression"
+            }
+          ]
+        }
       }
     },
     "_if_expression_element": {

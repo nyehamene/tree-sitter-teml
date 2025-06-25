@@ -152,3 +152,28 @@ conditional - else
 				condition: (identifier)
 				then: (string)
 				else: (element tag: (identifier))))))
+
+==============================================
+conditional - nested
+==============================================
+
+(document []
+	(if f
+		(div
+			(if f (div)))
+		(span)))
+
+----------------------------------------------
+
+(source_file
+	(document_declaration
+		(properties)
+		(template
+			(if_expression
+				(identifier)
+				(element (identifier)
+					(children
+						(if_expression
+							(identifier)
+							(element (identifier)))))
+				(element (identifier))))))

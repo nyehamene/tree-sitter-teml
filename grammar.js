@@ -199,11 +199,9 @@ module.exports = grammar({
       seq(
         "(",
         field("tag", $._identifier_or_member_access),
-        alias(repeat(choice($.attributes, $._element_content)), $.children),
+        alias(repeat(choice($.attributes, alias($.template, ""))), $.children),
         ")",
       ),
-
-    _element_content: ($) => prec.right(choice($.string, $.element)),
 
     attributes: ($) =>
       seq(
@@ -217,12 +215,14 @@ module.exports = grammar({
       seq(field("key", $.identifier), ":", field("value", $._expression)),
 
     template: ($) =>
-      repeat1(
-        choice(
-          $.string,
-          $.element,
-          alias($._conditional_element, $.conditional),
-          alias($._if_expression_element, $.if_expression),
+      prec.right(
+        repeat1(
+          choice(
+            $.string,
+            $.element,
+            alias($._conditional_element, $.conditional),
+            alias($._if_expression_element, $.if_expression),
+          ),
         ),
       ),
 
