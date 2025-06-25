@@ -114,3 +114,204 @@ conditional - comma separator
 								(option
 									constant: (number)
 									value: (string))))))))))
+
+==============================================
+conditional - element
+==============================================
+
+(component f []
+	(cond f
+		true: (div)
+		false: (span)))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(conditional
+				target: (identifier)
+				(option constant: (bool)
+					value: (element tag: (identifier)))
+				(option constant: (bool)
+					value: (element tag: (identifier)))))))
+
+==============================================
+conditional - string
+==============================================
+
+(component f []
+	(cond f
+		true: "line 1"
+		false: "line 2"))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(conditional
+				target: (identifier)
+				(option constant: (bool) value: (string))
+				(option constant: (bool) value: (string))))))
+
+==============================================
+conditional - string line
+==============================================
+
+(component f []
+	(cond f
+		true: -- line 1
+		false: -- line 2
+		))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(conditional
+				target: (identifier)
+				(option constant: (bool) value: (string))
+				(option constant: (bool) value: (string))))))
+
+==============================================
+conditional - mixed (string, element)
+==============================================
+
+(component f []
+	(cond f
+		1: -- line 1
+		0: (div)))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(conditional
+				(identifier)
+				(option (number) (string))
+				(option (number) (element (identifier)))))))
+
+==============================================
+conditional - mixed (element, string)
+==============================================
+
+(component f []
+	(cond f
+		0: (div)
+		1: -- line 1
+		))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(conditional
+				(identifier)
+				(option (number) (element (identifier)))
+				(option (number) (string))))))
+
+==============================================
+conditional - mixed (string, string line)
+==============================================
+
+(component f []
+	(cond f
+		0: "text"
+		1: -- line 1
+		))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(conditional
+				(identifier)
+				(option (number) (string))
+				(option (number) (string))))))
+
+==============================================
+conditional - mixed (string line, string)
+==============================================
+
+(component f []
+	(cond f
+		1: -- line 1
+		0: "text"
+		))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(conditional
+				(identifier)
+				(option (number) (string))
+				(option (number) (string))))))
+
+==============================================
+conditional - mixed (string line, string, element)
+==============================================
+
+(component f []
+	(cond f
+		1: -- line 1
+		0: "text"
+		2: (div)
+		))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(conditional
+				(identifier)
+				(option (number) (string))
+				(option (number) (string))
+				(option (number) (element (identifier)))))))
+
+==============================================
+conditional - mixed (string, string line, element)
+==============================================
+
+(component f []
+	(cond f
+		0: "text"
+		1: -- line 1 
+		2: (div)
+		))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(conditional
+				(identifier)
+				(option (number) (string))
+				(option (number) (string))
+				(option (number) (element (identifier)))))))

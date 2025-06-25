@@ -431,6 +431,10 @@
             "named": true
           },
           {
+            "type": "element",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -585,6 +589,10 @@
       "required": true,
       "types": [
         {
+          "type": "conditional",
+          "named": true
+        },
+        {
           "type": "element",
           "named": true
         },
@@ -655,6 +663,10 @@
         ]
       }
     }
+  },
+  {
+    "type": "\n",
+    "named": false
   },
   {
     "type": "\"",

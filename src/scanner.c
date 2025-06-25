@@ -74,14 +74,15 @@ static bool scan_string_content(void *payload, TSLexer *lexer,
       }
       break;
     case '\n':
-      if (is_line) {
-        return has_content;
-      }
+      advance(lexer);
       //
       // if scanning a quoted string content this means there is
       // unbalanced "
       //
-      return false;
+      if (is_quoted) {
+        return false;
+      }
+      return has_content;
     case '\\':
       // check if the next token is a template_expression
       advance(lexer);

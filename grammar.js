@@ -47,13 +47,12 @@ module.exports = grammar({
         '"',
       ),
 
-    _line_string_content: () => /[^\n]/,
-
     _string_line: ($) =>
       prec.left(
         seq(
           "--",
           repeat(choice($._line_string_content, $.template_expression)),
+          optional("\n"),
         ),
       ),
 
@@ -217,7 +216,32 @@ module.exports = grammar({
     attribute: ($) =>
       seq(field("key", $.identifier), ":", field("value", $._expression)),
 
-    template: ($) => repeat1(choice($.string, $.element)),
+    template: ($) =>
+      repeat1(
+        choice(
+          $.string,
+          $.element,
+          alias($._conditional_element, $.conditional),
+        ),
+      ),
+
+    _conditional_element: ($) =>
+      seq(
+        "(",
+        "cond",
+        field("target", $.identifier),
+        repeat(
+          seq(alias($._conditional_element_option, $.option), optional(",")),
+        ),
+        ")",
+      ),
+
+    _conditional_element_option: ($) =>
+      seq(
+        field("constant", choice($._literal)),
+        ":",
+        field("value", choice($.string, $.element)),
+      ),
 
     _imports: ($) => repeat1($.import_declaration),
   },
