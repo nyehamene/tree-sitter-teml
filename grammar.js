@@ -64,8 +64,10 @@ module.exports = grammar({
 
     bool: () => choice("true", "false"),
 
-    _primary_expression: ($) =>
-      choice(alias($._string_quoted, $.string), $.number, $.bool, $.identifier),
+    _literal: ($) =>
+      choice(alias($._string_quoted, $.string), $.number, $.bool),
+
+    _primary_expression: ($) => choice($._literal, $.identifier),
 
     template_expression: ($) =>
       seq(
@@ -103,7 +105,7 @@ module.exports = grammar({
 
     _conditional_option: ($) =>
       seq(
-        field("constant", choice($.string, $.number)),
+        field("constant", choice($._literal)),
         ":",
         field("value", $._expression),
       ),

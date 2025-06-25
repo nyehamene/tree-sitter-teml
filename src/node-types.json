@@ -405,6 +405,10 @@
         "required": true,
         "types": [
           {
+            "type": "bool",
+            "named": true
+          },
+          {
             "type": "number",
             "named": true
           },
