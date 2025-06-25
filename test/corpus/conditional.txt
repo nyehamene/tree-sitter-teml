@@ -315,3 +315,31 @@ conditional - mixed (string, string line, element)
 				(option (number) (string))
 				(option (number) (string))
 				(option (number) (element (identifier)))))))
+
+==============================================
+conditional - nested
+==============================================
+
+(component f []
+	(cond f
+		true: (div
+				(cond b
+					false: (span)))))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(conditional
+				(identifier)
+				(option (bool)
+					(element
+						(identifier)
+							(children
+								(conditional
+									(identifier)
+									(option (bool)
+										(element (identifier)))))))))))
