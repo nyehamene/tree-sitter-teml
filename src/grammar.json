@@ -167,6 +167,26 @@
         ]
       }
     },
+    "_string_line_cat": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_string_line"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_string_line"
+            }
+          }
+        ]
+      }
+    },
     "string": {
       "type": "CHOICE",
       "members": [
@@ -176,7 +196,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_string_line"
+          "name": "_string_line_cat"
         }
       ]
     },

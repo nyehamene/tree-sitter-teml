@@ -56,8 +56,11 @@ module.exports = grammar({
         ),
       ),
 
+    _string_line_cat: ($) =>
+      prec.right(seq($._string_line, repeat($._string_line))),
+
     // TODO: support escape sequences are expression; may require external scanner
-    string: ($) => choice($._string_quoted, $._string_line),
+    string: ($) => choice($._string_quoted, $._string_line_cat),
 
     number: () => choice("0", /[1-9][0-9]*/),
 

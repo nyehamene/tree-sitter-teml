@@ -91,3 +91,20 @@ template expression - nested
 						(template_expression
 							(string))))))))
 
+============================
+string line joined
+============================
+
+(document f []
+	-- line 1
+	-- line 2
+	)
+
+----------------------------
+
+(source_file
+	(document_declaration
+		(identifier)
+		(properties)
+		(template
+			(string))))
