@@ -839,6 +839,13 @@
         }
       ]
     },
+    "_imports": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "import_declaration"
+      }
+    },
     "element": {
       "type": "SEQ",
       "members": [
@@ -1007,13 +1014,6 @@
             "name": "element"
           }
         ]
-      }
-    },
-    "_imports": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SYMBOL",
-        "name": "import_declaration"
       }
     }
   },
