@@ -75,12 +75,11 @@ module.exports = grammar({
         ")",
       ),
 
-    _expression: ($) =>
-      choice(
-        $._primary_expression,
-        $.member_access,
-        $.if_expression,
-        $.conditional,
+    member_access: ($) =>
+      seq(
+        field("object", $._identifier_or_member_access),
+        token.immediate("/"),
+        field("member", $.identifier),
       ),
 
     if_expression: ($) =>
@@ -98,7 +97,7 @@ module.exports = grammar({
         "(",
         "cond",
         field("target", $.identifier),
-        repeat(alias($._conditional_option, $.option)),
+        repeat(seq(alias($._conditional_option, $.option), optional(","))),
         ")",
       ),
 
@@ -107,7 +106,24 @@ module.exports = grammar({
         field("constant", choice($.string, $.number)),
         ":",
         field("value", $._expression),
-        optional(","),
+      ),
+
+    _expression: ($) =>
+      choice(
+        $._primary_expression,
+        $.member_access,
+        $.if_expression,
+        $.conditional,
+      ),
+
+    _type: ($) => choice($._identifier_or_member_access, $.enum),
+
+    enum: ($) =>
+      seq(
+        "(",
+        "enum",
+        repeat(field("constant", choice($.string, $.number))),
+        ")",
       ),
 
     package_declaration: ($) =>
@@ -178,16 +194,6 @@ module.exports = grammar({
     property: ($) =>
       seq(field("name", $.identifier), ":", field("type", $._type)),
 
-    _type: ($) => choice($._identifier_or_member_access, $.enum),
-
-    enum: ($) =>
-      seq(
-        "(",
-        "enum",
-        repeat(field("constant", choice($.string, $.number))),
-        ")",
-      ),
-
     element: ($) =>
       seq(
         "(",
@@ -208,13 +214,6 @@ module.exports = grammar({
 
     attribute: ($) =>
       seq(field("key", $.identifier), ":", field("value", $._expression)),
-
-    member_access: ($) =>
-      seq(
-        field("object", $._identifier_or_member_access),
-        token.immediate("/"),
-        field("member", $.identifier),
-      ),
 
     template: ($) => repeat1(choice($.string, $.element)),
 
