@@ -74,3 +74,81 @@ if expression - false
 								then: (string)
 								else: (number)))))))))
 
+==============================================
+conditional - element
+==============================================
+
+(component foo []
+	(if c
+		(div)))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(if_expression
+				(identifier)
+				(element (identifier))))))
+
+==============================================
+conditional - string
+==============================================
+
+(component foo []
+	(if c
+		"string"))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(if_expression
+				(identifier)
+				(string)))))
+
+==============================================
+conditional - string line
+==============================================
+
+(component foo []
+	(if c
+		-- line 1
+		))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		(identifier)
+		(properties)
+		(template
+			(if_expression
+				(identifier)
+				(string)))))
+
+==============================================
+conditional - else
+==============================================
+
+(component foo []
+	(if c
+		-- line 1
+		(div)))
+
+----------------------------------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(if_expression
+				condition: (identifier)
+				then: (string)
+				else: (element tag: (identifier))))))

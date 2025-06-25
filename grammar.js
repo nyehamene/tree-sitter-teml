@@ -222,7 +222,18 @@ module.exports = grammar({
           $.string,
           $.element,
           alias($._conditional_element, $.conditional),
+          alias($._if_expression_element, $.if_expression),
         ),
+      ),
+
+    _if_expression_element: ($) =>
+      seq(
+        "(",
+        "if",
+        field("condition", choice($.identifier, $.bool)),
+        field("then", choice($.string, $.element)),
+        optional(field("else", choice($.string, $.element))),
+        ")",
       ),
 
     _conditional_element: ($) =>

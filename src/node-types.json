@@ -278,6 +278,10 @@
             "named": true
           },
           {
+            "type": "element",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -309,6 +313,10 @@
           },
           {
             "type": "conditional",
+            "named": true
+          },
+          {
+            "type": "element",
             "named": true
           },
           {
@@ -594,6 +602,10 @@
         },
         {
           "type": "element",
+          "named": true
+        },
+        {
+          "type": "if_expression",
           "named": true
         },
         {
