@@ -97,6 +97,10 @@
       "required": true,
       "types": [
         {
+          "type": "attributes",
+          "named": true
+        },
+        {
           "type": "element",
           "named": true
         },
@@ -213,13 +217,9 @@
       }
     },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
-        {
-          "type": "attributes",
-          "named": true
-        },
         {
           "type": "children",
           "named": true

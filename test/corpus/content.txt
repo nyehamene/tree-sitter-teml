@@ -122,8 +122,8 @@ element - content - element
 		(template
 			(element
 				(identifier)
-				(attributes)
 				(children
+					(attributes)
 					(element (identifier)))))))
 
 =================
@@ -174,8 +174,8 @@ element - mixed content
 		(template
 			(element
 				(identifier)
-				(attributes)
 				(children
+					(attributes)
 					(string)
 					(element (identifier)))))))
 

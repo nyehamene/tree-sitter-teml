@@ -16,12 +16,13 @@ if expression - identifier
 		(template
 			(element
 				tag: (identifier)
-				(attributes
-					(attribute
-						key: (identifier)
-						value: (if_expression
-							condition: (identifier)
-							then: (string))))))))
+				(children
+					(attributes
+						(attribute
+							key: (identifier)
+							value: (if_expression
+								condition: (identifier)
+								then: (string)))))))))
 
 
 ==============================================
@@ -40,12 +41,13 @@ if expression - true
 		(template
 			(element
 				tag: (identifier)
-				(attributes
-					(attribute
-						key: (identifier)
-						value: (if_expression
-							condition: (bool)
-							then: (string))))))))
+				(children
+					(attributes
+						(attribute
+							key: (identifier)
+							value: (if_expression
+								condition: (bool)
+								then: (string)))))))))
 
 ==============================================
 if expression - false
@@ -63,11 +65,12 @@ if expression - false
 		(template
 			(element
 				tag: (identifier)
-				(attributes
-					(attribute
-						key: (identifier)
-						value: (if_expression
-							condition: (bool)
-							then: (string)
-							else: (number))))))))
+				(children
+					(attributes
+						(attribute
+							key: (identifier)
+							value: (if_expression
+								condition: (bool)
+								then: (string)
+								else: (number)))))))))
 

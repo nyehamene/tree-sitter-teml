@@ -198,11 +198,11 @@ module.exports = grammar({
       seq(
         "(",
         field("tag", $._identifier_or_member_access),
-        repeat(choice($.attributes, alias($._element_content, $.children))),
+        alias(repeat(choice($.attributes, $._element_content)), $.children),
         ")",
       ),
 
-    _element_content: ($) => prec.right(repeat1(choice($.string, $.element))),
+    _element_content: ($) => prec.right(choice($.string, $.element)),
 
     attributes: ($) =>
       seq(

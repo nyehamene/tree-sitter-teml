@@ -14,10 +14,11 @@ expression - bool
 		(template
 			(element
 				(identifier)
-				(attributes
-					(attribute
-						(identifier)
-						(bool)))))))
+				(children
+					(attributes
+						(attribute
+							(identifier)
+							(bool))))))))
 
 ===================
 expression - string
@@ -35,10 +36,11 @@ expression - string
 		(template
 			(element
 				(identifier)
-				(attributes
-					(attribute
-						(identifier)
-						(string)))))))
+				(children
+					(attributes
+						(attribute
+							(identifier)
+							(string))))))))
 
 
 ===================
@@ -58,13 +60,14 @@ expression - number
 		(template
 			(element
 				(identifier)
-				(attributes
-					(attribute
-						(identifier)
-						(number))
-					(attribute
-						(identifier)
-						(number)))))))
+				(children
+					(attributes
+						(attribute
+							(identifier)
+							(number))
+						(attribute
+							(identifier)
+							(number))))))))
 
 ===================
 expression - identifier
@@ -81,9 +84,10 @@ expression - identifier
 		(properties)
 		(template
 			(element
-			tag: (identifier)
-			(attributes
-				(attribute
-					key: (identifier)
-					value: (identifier)))))))
+				tag: (identifier)
+			(children
+				(attributes
+					(attribute
+						key: (identifier)
+						value: (identifier))))))))
 

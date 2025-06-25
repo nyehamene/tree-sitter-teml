@@ -20,31 +20,35 @@ element
 				tag: (member_access
 					object: (identifier)
 					member: (identifier))
-				(attributes))
+				(children
+					(attributes)))
 			(element
 				tag: (identifier)
-				(attributes
-					(attribute
-						key: (identifier)
-						value: (string))))
+				(children
+					(attributes
+						(attribute
+							key: (identifier)
+						value: (string)))))
 			(element
 				tag: (identifier)
-				(attributes
-					(attribute
-						key: (identifier)
-						value: (string))
-					(attribute
-						key: (identifier)
-						value: (string))))
+				(children
+					(attributes
+						(attribute
+							key: (identifier)
+							value: (string))
+						(attribute
+							key: (identifier)
+							value: (string)))))
 			(element
 				tag: (identifier)
-				(attributes
+				(children
+					(attributes
+						(attribute
+							key: (identifier)
+							value: (string))
 					(attribute
-						key: (identifier)
-						value: (string))
-				(attribute
-						key: (identifier)
-						value: (string)))))))
+							key: (identifier)
+							value: (string))))))))
 
 =================
 element - attribute directive
@@ -64,22 +68,25 @@ element - attribute directive
 		(template
 			(element
 				tag: (identifier)
-				(attributes
-					directive: (identifier)))
+				(children
+					(attributes
+						directive: (identifier))))
 			(element
 				tag: (identifier)
-				(attributes
-					directive: (member_access
-						object: (identifier)
-						member: (identifier))))
-			(element
-				tag: (identifier)
-				(attributes
-					directive: (member_access
-						object: (member_access
+				(children
+					(attributes
+						directive: (member_access
 							object: (identifier)
-							member: (identifier))
-						member: (identifier)))))))
+							member: (identifier)))))
+			(element
+				tag: (identifier)
+				(children
+					(attributes
+						directive: (member_access
+							object: (member_access
+								object: (identifier)
+								member: (identifier))
+							member: (identifier))))))))
 
 =================
 element - multiple attributes
@@ -97,8 +104,9 @@ element - multiple attributes
 		(template
 			(element
 				(identifier)
-				(attributes)
-				(attributes)))))
+				(children
+					(attributes)
+					(attributes))))))
 
 =================
 element - mixed attribute and content
@@ -119,7 +127,8 @@ element - mixed attribute and content
 		(template
 			(element
 				(identifier)
-				(attributes)
-				(children (string))
-				(attributes)
-				(children (element (identifier)))))))
+				(children
+					(attributes)
+					(string)
+					(attributes)
+					(element (identifier)))))))

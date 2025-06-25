@@ -16,17 +16,18 @@ conditional
 		(template
 			(element
 				tag: (identifier)
-				(attributes
-					(attribute
-						key: (identifier)
-						value: (conditional
-							target: (identifier)
-							(option
-								constant: (string)
-								value: (string))
-							(option
-								constant: (string)
-								value: (string)))))))))
+				(children
+					(attributes
+						(attribute
+							key: (identifier)
+							value: (conditional
+								target: (identifier)
+								(option
+									constant: (string)
+									value: (string))
+								(option
+									constant: (string)
+									value: (string))))))))))
 
 ==============================================
 conditional - comma separator
@@ -44,14 +45,15 @@ conditional - comma separator
 		(template
 			(element
 				tag: (identifier)
-				(attributes
-					(attribute
-						key: (identifier)
-						value: (conditional
-							target: (identifier)
-							(option
-								constant: (number)
-								value: (string))
-							(option
-								constant: (number)
-								value: (string)))))))))
+				(children
+					(attributes
+						(attribute
+							key: (identifier)
+							value: (conditional
+								target: (identifier)
+								(option
+									constant: (number)
+									value: (string))
+								(option
+									constant: (number)
+									value: (string))))))))))
