@@ -202,9 +202,16 @@ module.exports = grammar({
       seq(
         "(",
         field("tag", $._identifier_or_member_access),
+        optional(alias($._element_parameters, $.parameters)),
         alias(repeat(choice($.attributes, alias($.template, ""))), $.children),
         ")",
       ),
+
+    _element_parameters: ($) =>
+      seq("[", repeat1(alias($._element_parameter, $.parameter)), "]"),
+
+    _element_parameter: ($) =>
+      seq(field("name", $.identifier), ":", field("value", $._expression)),
 
     attributes: ($) =>
       seq(

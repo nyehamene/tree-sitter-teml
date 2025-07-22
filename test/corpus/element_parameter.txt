@@ -1,0 +1,26 @@
+==================
+element parameter
+==================
+
+(component A []
+	(B [name: "john" age: 70 male: true]))
+
+------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(element
+				tag: (identifier)
+				(parameters
+					(parameter
+						name: (identifier)
+						value: (string))
+					(parameter
+						name: (identifier)
+						value: (number))
+					(parameter
+						name: (identifier)
+						value: (bool)))))))
