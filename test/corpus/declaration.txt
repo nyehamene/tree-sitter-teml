@@ -6,7 +6,7 @@ comment
 
 ----------------------
 
-(source_file (comment))
+(program (comment))
 
 ======================
 package declaration
@@ -16,7 +16,7 @@ package declaration
 
 ----------------------
 
-(source_file
+(program
 	(package_declaration
 		name: (identifier)
 		path: (string)))
@@ -49,7 +49,7 @@ import declaration
 
 ----------------------
 
-(source_file
+(program
 	(import_declaration
 		name: (identifier)
 		path: (string))
@@ -88,7 +88,7 @@ using declaration
 
 ----------------------
 
-(source_file
+(program
 	(import_declaration
 		name: (identifier)
 		path: (string))
@@ -148,7 +148,7 @@ component declaration
 
 ----------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties))
@@ -193,7 +193,7 @@ document declaration: no name
 
 ----------------------
 
-(source_file (document_declaration (properties)))
+(program (document_declaration (properties)))
 
 ======================
 document declaration: empty property list
@@ -203,7 +203,7 @@ document declaration: empty property list
 
 ----------------------
 
-(source_file
+(program
 	(document_declaration name: (identifier) (properties)))
 
 ======================
@@ -214,7 +214,7 @@ document declaration: property
 
 ----------------------
 
-(source_file
+(program
 	(document_declaration
 		name: (identifier)
 		(properties
@@ -228,7 +228,7 @@ document declaration: trailing comma
 
 ----------------------
 
-(source_file
+(program
 	(document_declaration
 		name: (identifier)
 		(properties
@@ -242,7 +242,7 @@ document declaration: comma separator
 
 ----------------------
 
-(source_file
+(program
 	(document_declaration
 		name: (identifier)
 		(properties
@@ -257,7 +257,7 @@ document declaration: no comma b/w properties
 
 ----------------------
 
-(source_file
+(program
 	(document_declaration
 		name: (identifier)
 		(properties
@@ -293,7 +293,7 @@ document and component declaration order
 
 ----------------------
 
-(source_file
+(program
 	(component_declaration (identifier) (properties))
     (document_declaration (properties))
 	(component_declaration (identifier) (properties))

@@ -7,7 +7,7 @@ expression - bool
 
 -------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -29,7 +29,7 @@ expression - string
 
 -------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -53,7 +53,7 @@ expression - number
 
 -------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -78,7 +78,7 @@ expression - identifier
 
 -------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)

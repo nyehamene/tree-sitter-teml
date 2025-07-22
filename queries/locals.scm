@@ -1,4 +1,4 @@
-(source_file) @local.scope
+(program) @local.scope
 (component_declaration) @local.scope
 (document_declaration) @local.scope
 

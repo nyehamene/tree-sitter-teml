@@ -7,7 +7,7 @@ element parameter
 
 ------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)

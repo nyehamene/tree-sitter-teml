@@ -9,7 +9,7 @@ component - string content
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -28,7 +28,7 @@ document - string content
 
 -----------------
 
-(source_file
+(program
 	(document_declaration
 		(identifier)
 		(properties)
@@ -45,7 +45,7 @@ element - quoted string content
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -66,7 +66,7 @@ element - line string content
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -84,7 +84,7 @@ component - content - element
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -99,7 +99,7 @@ document - content - element
 
 -----------------
 
-(source_file
+(program
 	(document_declaration
 		(identifier)
 		(properties)
@@ -115,7 +115,7 @@ element - content - element
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -134,7 +134,7 @@ component - mixed content
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -150,7 +150,7 @@ document - mixed content
 
 -----------------
 
-(source_file
+(program
 	(document_declaration
 		(identifier)
 		(properties)
@@ -167,7 +167,7 @@ element - mixed content
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)

@@ -6,7 +6,7 @@ template expression - identifier
 
 --------------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -23,7 +23,7 @@ template expression - bool
 
 ----------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -43,7 +43,7 @@ template expression - conditional
 
 ----------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -63,7 +63,7 @@ template expression - string
 
 ----------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -80,7 +80,7 @@ template expression - nested
 
 ----------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -102,7 +102,7 @@ string line joined
 
 ----------------------------
 
-(source_file
+(program
 	(document_declaration
 		(identifier)
 		(properties)

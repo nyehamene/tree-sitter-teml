@@ -7,7 +7,7 @@ conditional - string
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -36,7 +36,7 @@ conditional - number
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -66,7 +66,7 @@ conditional - bool
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -95,7 +95,7 @@ conditional - comma separator
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -126,7 +126,7 @@ conditional - element
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -149,7 +149,7 @@ conditional - string
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -171,7 +171,7 @@ conditional - string line
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -192,7 +192,7 @@ conditional - mixed (string, element)
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -214,7 +214,7 @@ conditional - mixed (element, string)
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -236,7 +236,7 @@ conditional - mixed (string, string line)
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -258,7 +258,7 @@ conditional - mixed (string line, string)
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -281,7 +281,7 @@ conditional - mixed (string line, string, element)
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -305,7 +305,7 @@ conditional - mixed (string, string line, element)
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -328,7 +328,7 @@ conditional - nested
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)

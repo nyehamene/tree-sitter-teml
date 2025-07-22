@@ -6,7 +6,7 @@ escaped template
 
 ---------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)

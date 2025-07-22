@@ -6,7 +6,7 @@ simple property type
 
 -----------------
 
-(source_file
+(program
 	(document_declaration
 		(properties
 			(property
@@ -21,7 +21,7 @@ enum property type - string
 
 ------------------
 
-(source_file
+(program
 	(document_declaration
 		(properties
 			(property
@@ -38,7 +38,7 @@ enum property type - number
 
 ------------------
 
-(source_file
+(program
 	(document_declaration
 		(properties
 			(property
@@ -55,7 +55,7 @@ component - simple property type
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties
@@ -71,7 +71,7 @@ component - enum property type - string
 
 ------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties
@@ -89,7 +89,7 @@ component - enum property type - number
 
 ------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties

@@ -9,7 +9,7 @@ if expression - identifier
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -34,7 +34,7 @@ if expression - true
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -58,7 +58,7 @@ if expression - false
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -84,7 +84,7 @@ conditional - element
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -103,7 +103,7 @@ conditional - string
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -123,7 +123,7 @@ conditional - string line
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -143,7 +143,7 @@ conditional - else
 
 ----------------------------------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -165,7 +165,7 @@ conditional - nested
 
 ----------------------------------------------
 
-(source_file
+(program
 	(document_declaration
 		(properties)
 		(template

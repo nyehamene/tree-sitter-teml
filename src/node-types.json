@@ -581,6 +581,38 @@
     }
   },
   {
+    "type": "program",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "component_declaration",
+          "named": true
+        },
+        {
+          "type": "document_declaration",
+          "named": true
+        },
+        {
+          "type": "import_declaration",
+          "named": true
+        },
+        {
+          "type": "package_declaration",
+          "named": true
+        },
+        {
+          "type": "using_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "properties",
     "named": true,
     "fields": {},
@@ -627,37 +659,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "source_file",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "component_declaration",
-          "named": true
-        },
-        {
-          "type": "document_declaration",
-          "named": true
-        },
-        {
-          "type": "import_declaration",
-          "named": true
-        },
-        {
-          "type": "package_declaration",
-          "named": true
-        },
-        {
-          "type": "using_declaration",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -817,7 +818,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "component",

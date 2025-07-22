@@ -9,7 +9,7 @@ element
 	(foo { k: "v"  a: "b" }))
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -53,7 +53,7 @@ element - attribute directive
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -73,7 +73,7 @@ element - multiple attributes
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)
@@ -96,7 +96,7 @@ element - mixed attribute and content
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		(identifier)
 		(properties)

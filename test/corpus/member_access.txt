@@ -8,7 +8,7 @@ property type
 
 ---------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties
@@ -35,7 +35,7 @@ element tag
 
 ---------------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)
@@ -65,7 +65,7 @@ attribtue directive
 
 -----------------
 
-(source_file
+(program
 	(component_declaration
 		name: (identifier)
 		(properties)

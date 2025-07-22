@@ -25,7 +25,7 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: ($) =>
+    program: ($) =>
       seq(
         optional($.package_declaration),
         optional(seq($._imports, repeat($.using_declaration))),
