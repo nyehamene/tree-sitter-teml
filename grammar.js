@@ -82,7 +82,7 @@ module.exports = grammar({
     member_access: ($) =>
       seq(
         field("object", $._identifier_or_member_access),
-        token.immediate("/"),
+        token.immediate("."),
         field("member", $.identifier),
       ),
 

@@ -1,0 +1,89 @@
+=====================
+property type
+=====================
+
+(component A [ x: a.b
+			 , y: a.b.c
+			 ])
+
+---------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties
+			(property
+				name: (identifier)
+				type: (member_access
+					object: (identifier)
+					member: (identifier)))
+			(property
+				name: (identifier)
+				type: (member_access
+					object: (member_access
+						object: (identifier)
+						member: (identifier))
+					member: (identifier))))))
+
+=====================
+element tag
+=====================
+
+(component A []
+	(a.b {})
+	(a.b.c {}))
+
+---------------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(element
+				tag: (member_access
+					object: (identifier)
+					member: (identifier))
+				(children
+					(attributes)))
+			(element
+				tag: (member_access
+					object: (member_access
+						object: (identifier)
+						member: (identifier))
+					member: (identifier))
+				(children
+					(attributes))))))
+
+=====================
+attribtue directive
+=====================
+
+(component foo []
+	(foo #a.b{})
+	(foo #a.b.c{}))
+
+-----------------
+
+(source_file
+	(component_declaration
+		name: (identifier)
+		(properties)
+		(template
+			(element
+				tag: (identifier)
+				(children
+					(attributes
+						directive: (member_access
+							object: (identifier)
+							member: (identifier)))))
+			(element
+				tag: (identifier)
+				(children
+					(attributes
+						directive: (member_access
+							object: (member_access
+								object: (identifier)
+								member: (identifier))
+							member: (identifier))))))))
+

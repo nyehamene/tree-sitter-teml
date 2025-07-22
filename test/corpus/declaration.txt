@@ -145,7 +145,6 @@ component declaration
 (component fancy-button [a: A])
 (component fancy-button [a: A, b: B])
 (component fancy-button [a: A  b: B])
-(component fancy-button [a: S/B])
 
 ----------------------
 
@@ -166,15 +165,7 @@ component declaration
 		name: (identifier)
 		(properties
 			(property name: (identifier) type: (identifier))
-			(property name: (identifier) type: (identifier))))
-	(component_declaration
-		name: (identifier)
-		(properties
-			(property
-				name: (identifier)
-				type: (member_access
-					object: (identifier)
-					member: (identifier))))))
+			(property name: (identifier) type: (identifier)))))
 
 ======================
 component declaration: invalid name

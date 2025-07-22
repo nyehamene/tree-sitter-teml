@@ -4,7 +4,6 @@ element
 
 (component foo []
 	(foo)
-	(a/foo {})
 	(foo { k: "v", })
 	(foo { k: "v", a: "b" })
 	(foo { k: "v"  a: "b" }))
@@ -16,12 +15,7 @@ element
 		(properties)
 		(template
 			(element tag: (identifier))
-			(element
-				tag: (member_access
-					object: (identifier)
-					member: (identifier))
-				(children
-					(attributes)))
+			
 			(element
 				tag: (identifier)
 				(children
@@ -55,9 +49,7 @@ element - attribute directive
 =================
 
 (component foo []
-	(foo #a{})
-	(foo #a/b{})
-	(foo #a/b/c{}))
+	(foo #a{}))
 
 -----------------
 
@@ -70,23 +62,7 @@ element - attribute directive
 				tag: (identifier)
 				(children
 					(attributes
-						directive: (identifier))))
-			(element
-				tag: (identifier)
-				(children
-					(attributes
-						directive: (member_access
-							object: (identifier)
-							member: (identifier)))))
-			(element
-				tag: (identifier)
-				(children
-					(attributes
-						directive: (member_access
-							object: (member_access
-								object: (identifier)
-								member: (identifier))
-							member: (identifier))))))))
+						directive: (identifier)))))))
 
 =================
 element - multiple attributes

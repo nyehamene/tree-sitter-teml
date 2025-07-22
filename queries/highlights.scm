@@ -20,7 +20,7 @@
 [
   ":"
   ","
-  "/"
+  "."
 ] @punctuation.delimiter
 
 [
@@ -48,7 +48,7 @@
   (identifier) @variable)
 
 (member_access
-  "/" @punctuation.delimiter)
+  "." @punctuation.delimiter)
 
 (package_declaration name: (identifier) @variable.package)
 
