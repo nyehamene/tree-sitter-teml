@@ -28,7 +28,8 @@ module.exports = grammar({
     program: ($) =>
       seq(
         optional($.package_declaration),
-        optional(seq($._imports, repeat($.using_declaration))),
+        optional($._import_list),
+        optional($._using_list),
         repeat(choice($.document_declaration, $.component_declaration)),
       ),
 
@@ -126,7 +127,7 @@ module.exports = grammar({
       seq(
         "(",
         "enum",
-        repeat(field("constant", choice($.string, $.number))),
+        repeat(field("constant", choice($.string, $.number, $.identifier))),
         ")",
       ),
 
@@ -169,7 +170,7 @@ module.exports = grammar({
         "(",
         "using",
         choice($._using_single, $._using_multiple),
-        field("from", $.identifier),
+        field("from", $._identifier_or_member_access),
         ")",
       ),
 
@@ -264,6 +265,7 @@ module.exports = grammar({
         field("value", choice($.string, $.element)),
       ),
 
-    _imports: ($) => repeat1($.import_declaration),
+    _import_list: ($) => repeat1($.import_declaration),
+    _using_list: ($) => repeat1($.using_declaration),
   },
 });

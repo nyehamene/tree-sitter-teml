@@ -259,6 +259,10 @@
         "required": false,
         "types": [
           {
+            "type": "identifier",
+            "named": true
+          },
+          {
             "type": "number",
             "named": true
           },
@@ -583,7 +587,6 @@
   {
     "type": "program",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -749,6 +752,10 @@
           {
             "type": "identifier",
             "named": true
+          },
+          {
+            "type": "member_access",
+            "named": true
           }
         ]
       },
@@ -818,8 +825,7 @@
   },
   {
     "type": "comment",
-    "named": true,
-    "extra": true
+    "named": true
   },
   {
     "type": "component",

@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "teml",
   "word": "identifier",
   "rules": {
@@ -22,20 +21,20 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_imports"
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "using_declaration"
-                  }
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_import_list"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_using_list"
             },
             {
               "type": "BLANK"
@@ -528,6 +527,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "number"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
                 }
               ]
             }
@@ -706,7 +709,7 @@
           "name": "from",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "_identifier_or_member_access"
           }
         },
         {
@@ -1283,11 +1286,18 @@
         }
       ]
     },
-    "_imports": {
+    "_import_list": {
       "type": "REPEAT1",
       "content": {
         "type": "SYMBOL",
         "name": "import_declaration"
+      }
+    },
+    "_using_list": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "using_declaration"
       }
     }
   },
@@ -1318,6 +1328,6 @@
     }
   ],
   "inline": [],
-  "supertypes": [],
-  "reserved": {}
+  "supertypes": []
 }
+
