@@ -45,6 +45,10 @@
         "required": true,
         "types": [
           {
+            "type": ".",
+            "named": false
+          },
+          {
             "type": "bool",
             "named": true
           },
@@ -251,27 +255,45 @@
     }
   },
   {
-    "type": "enum",
+    "type": "enum_constants",
     "named": true,
     "fields": {
       "constant": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "identifier",
             "named": true
-          },
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "enum_declaration",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
           {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "string",
+            "type": "identifier",
             "named": true
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "enum_constants",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -296,6 +318,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": ".",
+            "named": false
+          },
           {
             "type": "bool",
             "named": true
@@ -334,6 +360,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": ".",
+            "named": false
+          },
           {
             "type": "bool",
             "named": true
@@ -458,6 +488,10 @@
         "required": true,
         "types": [
           {
+            "type": ".",
+            "named": false
+          },
+          {
             "type": "bool",
             "named": true
           },
@@ -538,6 +572,10 @@
         "required": true,
         "types": [
           {
+            "type": ".",
+            "named": false
+          },
+          {
             "type": "bool",
             "named": true
           },
@@ -587,6 +625,7 @@
   {
     "type": "program",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -598,6 +637,10 @@
         },
         {
           "type": "document_declaration",
+          "named": true
+        },
+        {
+          "type": "enum_declaration",
           "named": true
         },
         {
@@ -648,10 +691,6 @@
         "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "enum",
-            "named": true
-          },
           {
             "type": "identifier",
             "named": true
@@ -712,7 +751,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "bool",
@@ -825,7 +864,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "component",

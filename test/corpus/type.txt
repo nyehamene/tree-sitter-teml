@@ -14,40 +14,6 @@ simple property type
 				type: (identifier)))))
 
 ==================
-enum property type - string
-==================
-
-(document [p: (enum "A" "B")])
-
-------------------
-
-(program
-	(document_declaration
-		(properties
-			(property
-				name: (identifier)
-				type: (enum
-					constant: (string)
-					constant: (string))))))
-
-==================
-enum property type - number
-==================
-
-(document [p: (enum 10 20)])
-
-------------------
-
-(program
-	(document_declaration
-		(properties
-			(property
-				name: (identifier)
-				type: (enum
-					constant: (number)
-					constant: (number))))))
-
-==================
 component - simple property type
 ==================
 
@@ -64,37 +30,29 @@ component - simple property type
 				type: (identifier)))))
 
 ==================
+enum property type - string
+:error
+==================
+
+(document [p: (enum "A" "B")])
+
+==================
+enum property type - number
+:error
+==================
+
+(document [p: (enum 10 20)])
+
+==================
 component - enum property type - string
+:error
 ==================
 
 (component C [p: (enum "A" "B")])
 
-------------------
-
-(program
-	(component_declaration
-		name: (identifier)
-		(properties
-			(property
-				name: (identifier)
-				type: (enum
-					constant: (string)
-					constant: (string))))))
-
 ==================
 component - enum property type - number
+:error
 ==================
 
 (component C [p: (enum 10 20)])
-
-------------------
-
-(program
-	(component_declaration
-		name: (identifier)
-		(properties
-			(property
-				name: (identifier)
-				type: (enum
-					constant: (number)
-					constant: (number))))))

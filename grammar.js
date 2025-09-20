@@ -30,12 +30,21 @@ module.exports = grammar({
         optional($.package_declaration),
         optional($._import_list),
         optional($._using_list),
-        repeat(choice($.document_declaration, $.component_declaration)),
+        repeat(
+          choice(
+            $.document_declaration,
+            $.component_declaration,
+            $.enum_declaration,
+          ),
+        ),
       ),
 
     comment: () => token(seq(";", /[^\n]*/)),
 
     identifier: () => /[a-zA-Z][a-zA-Z[0-9]-_]*/,
+
+    _dot_identifier: () =>
+      seq(".", token.immediate(/[a-zA-Z][a-zA-Z[0-9]-_]*/)),
 
     _identifier_or_member_access: ($) => choice($.identifier, $.member_access),
 
@@ -70,7 +79,8 @@ module.exports = grammar({
     _literal: ($) =>
       choice(alias($._string_quoted, $.string), $.number, $.bool),
 
-    _primary_expression: ($) => choice($._literal, $.identifier),
+    _primary_expression: ($) =>
+      choice($._literal, $.identifier, $._dot_identifier),
 
     template_expression: ($) =>
       seq(
@@ -121,15 +131,7 @@ module.exports = grammar({
         $.conditional,
       ),
 
-    _type: ($) => choice($._identifier_or_member_access, $.enum),
-
-    enum: ($) =>
-      seq(
-        "(",
-        "enum",
-        repeat(field("constant", choice($.string, $.number, $.identifier))),
-        ")",
-      ),
+    _type: ($) => choice($._identifier_or_member_access),
 
     package_declaration: ($) =>
       seq(
@@ -193,6 +195,18 @@ module.exports = grammar({
         optional($.template),
         ")",
       ),
+
+    enum_declaration: ($) =>
+      seq(
+        "(",
+        "enum",
+        field("name", $.identifier),
+        seq("[", optional($.enum_constants), "]"),
+        ")",
+      ),
+
+    enum_constants: ($) =>
+      repeat1(seq(field("constant", $.identifier), optional(token(",")))),
 
     properties: ($) => seq("[", repeat(seq($.property, optional(","))), "]"),
 

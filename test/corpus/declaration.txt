@@ -300,6 +300,37 @@ document and component declaration order
 	(component_declaration (identifier) (properties)))
 
 ======================
+enum declaration
+======================
+
+(enum E [one, two])
+
+----------------------
+
+(program
+	(enum_declaration
+		name: (identifier)
+		(enum_constants
+			constant: (identifier)
+			constant: (identifier))))
+
+
+======================
+enum declaration - optional semi-colon
+======================
+
+(enum E [one two])
+
+----------------------
+
+(program
+	(enum_declaration
+		name: (identifier)
+		(enum_constants
+			constant: (identifier)
+			constant: (identifier))))
+
+======================
 document declaration: one per file
 :error
 :skip
